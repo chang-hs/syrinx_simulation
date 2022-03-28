@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    165614,       3603]
-NotebookOptionsPosition[    160979,       3516]
-NotebookOutlinePosition[    161554,       3536]
-CellTagsIndexPosition[    161511,       3533]
+NotebookDataLength[    169697,       3691]
+NotebookOptionsPosition[    164247,       3592]
+NotebookOutlinePosition[    164822,       3612]
+CellTagsIndexPosition[    164779,       3609]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -42,12 +42,45 @@ Cell[BoxData["Quit"], "Input",
 
 Cell[CellGroupData[{
 
+Cell[BoxData[
+ RowBox[{"8", "Pi", "*", "0.0007", "*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"0.01", "/", "1.6"}], "/", "1.6"}], "/", 
+   RowBox[{"10", "^", 
+    RowBox[{"(", 
+     RowBox[{"-", "8"}], ")"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.857420770597435*^9, 3.8574208637082663`*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"bab0be10-d986-4862-8fb8-91705c829e8d"],
+
+Cell[BoxData["6872.233929727672`"], "Output",
+ CellChangeTimes->{{3.857420774575597*^9, 3.857420781454584*^9}, 
+   3.85742086503645*^9},
+ CellLabel->"Out[73]=",ExpressionUUID->"472655b0-ad21-4f9e-893f-4e80664d4acf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Pi", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"0.01", "^", "2"}], "-", 
+    RowBox[{"0.007", "^", "2"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.857421636081039*^9, 3.857421655191428*^9}},
+ CellLabel->"In[78]:=",ExpressionUUID->"3009ac57-c2cd-4deb-8c45-ec723f65df91"],
+
+Cell[BoxData["0.00016022122533307945`"], "Output",
+ CellChangeTimes->{3.857421656172083*^9},
+ CellLabel->"Out[78]=",ExpressionUUID->"3aa81c2a-a474-42c6-9866-9d9a058bf4f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["One - way Valve Analysis", "Section",
  CellChangeTimes->{{3.85579813269759*^9, 3.8557981378614798`*^9}, 
    3.8557982071886177`*^9},ExpressionUUID->"27e3a0d2-b8ab-436f-964a-\
 17c9ba9a4a56"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -101,11 +134,17 @@ Cell[BoxData[{
   RowBox[{"(*", " ", 
    RowBox[{
    "conversion", " ", "constant", " ", "from", " ", "mmHg", " ", "to", " ", 
-    RowBox[{"N", "/", 
-     RowBox[{"m", "^", "2"}]}]}], "*)"}]}], "\[IndentingNewLine]", 
+    "Pascal"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"convcmH2O", "=", "98.0665"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"1", " ", "cmH2O"}], " ", "=", " ", 
+    RowBox[{"98.0665", " ", "Pascal"}]}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"subaraP", "=", 
-   RowBox[{"100", "convmmhg"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"10", "convcmH2O"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"pulseAmp", "=", 
    RowBox[{"subaraP", "/", "5"}]}], ";"}], "\[IndentingNewLine]", 
@@ -155,12 +194,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"SFFactor", "=", "4000"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{
-   RowBox[{"CFFactor", "=", "150000000000"}], ";"}], " ", 
+  RowBox[{"CFFactor", "=", "150000000000"}], ";", " ", 
   RowBox[{"(*", " ", 
    RowBox[{"canal", " ", "flow", " ", "gain", " ", "for", " ", "display"}], 
-   " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
+   " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"rpattern", "=", "1"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"r", "=", 
@@ -215,33 +252,27 @@ Cell[BoxData[{
           RowBox[{"n", "/", "2"}]}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
      "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{
-   RowBox[{"c", "=", 
-    RowBox[{"Table", "[", 
-     RowBox[{"dcanal", ",", 
-      RowBox[{"n", "-", "1"}]}], "]"}]}], ";"}], 
+  RowBox[{"c", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"dcanal", ",", 
+     RowBox[{"n", "-", "1"}]}], "]"}]}], ";", 
   RowBox[{"(*", " ", 
-   RowBox[{"canal", " ", "capacitance"}], " ", "*)"}]}], "\n", 
- RowBox[{
-  RowBox[{
-   RowBox[{"d", "=", 
-    RowBox[{"Join", "[", 
-     RowBox[{
-      RowBox[{"Table", "[", 
-       RowBox[{"dsub", ",", 
-        RowBox[{"n", "-", "1"}]}], "]"}], ",", " ", 
-      RowBox[{"{", "dtheca", "}"}]}], "]"}]}], ";"}], 
+   RowBox[{"canal", " ", "capacitance"}], " ", "*)"}], "\n", 
+  RowBox[{"d", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{"dsub", ",", 
+       RowBox[{"n", "-", "1"}]}], "]"}], ",", " ", 
+     RowBox[{"{", "dtheca", "}"}]}], "]"}]}], ";", 
   RowBox[{"(*", " ", 
-   RowBox[{"subarachnoid", " ", "capacitance"}], " ", "*)"}], "\n"}], "\n", 
- RowBox[{
-  RowBox[{
-   RowBox[{"k", "=", "25"}], ";"}], " ", 
+   RowBox[{"subarachnoid", " ", "capacitance"}], " ", "*)"}], "\n", "\n", 
+  RowBox[{"k", "=", "25"}], ";", " ", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"location", " ", "of", " ", "one"}], "-", 
     RowBox[{"way", " ", "valve", " ", "of", " ", "the", " ", "canal"}]}], " ",
-    "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
+    "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"Vob", "[", "t_", "]"}], ":=", 
    RowBox[{
@@ -1044,8 +1075,19 @@ Cell[BoxData[{
    3.856914355279052*^9, 3.856914537677762*^9}, {3.856914860478015*^9, 
    3.856914869898538*^9}, 3.8569162021560593`*^9, 3.856916237739291*^9, {
    3.85691685970413*^9, 3.856916859950451*^9}, {3.856916930343856*^9, 
-   3.856916931870184*^9}, {3.856981754756934*^9, 3.8569817760347548`*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"d0555d94-fb64-4e8f-b9bf-25161a7ab3b9"],
+   3.856916931870184*^9}, {3.856981754756934*^9, 3.8569817760347548`*^9}, {
+   3.857418909727414*^9, 3.857418912268903*^9}, {3.857421875531838*^9, 
+   3.857421930040154*^9}, {3.857421961122539*^9, 3.857421988202444*^9}, {
+   3.857422020995113*^9, 3.857422036059215*^9}, {3.85742466116334*^9, 
+   3.857424667810603*^9}},
+ CellLabel->
+  "In[152]:=",ExpressionUUID->"d0555d94-fb64-4e8f-b9bf-25161a7ab3b9"],
+
+Cell[BoxData["98.0665`"], "Output",
+ CellChangeTimes->{3.857422127275216*^9, 3.857424635022273*^9, 
+  3.857424669510549*^9},
+ CellLabel->
+  "Out[158]=",ExpressionUUID->"bd509481-dcae-4468-864e-1784ddba9095"],
 
 Cell[BoxData[
  RowBox[{
@@ -1063,7 +1105,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{
                RowBox[{"DuralTension", "[", "i", "]"}], "[", "t", "]"}], "/", 
-              "convmmhg"}]}], "}"}], ",", 
+              "convcmH2O"}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -1078,7 +1120,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTension", "[", "i", "]"}], "[", "t", "]"}], 
-               "/", "convmmhg"}]}]}], "}"}], ",", 
+               "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -1112,8 +1154,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -1288,19 +1329,19 @@ Cell[BoxData[
    3.855794500552034*^9}, {3.8557968917084627`*^9, 3.855796918486635*^9}, {
    3.855798301959745*^9, 3.8557983200291357`*^9}, {3.8569145952121964`*^9, 
    3.8569145956179457`*^9}, {3.856915159824121*^9, 3.856915160343355*^9}, {
-   3.857416937150961*^9, 
-   3.857416953112644*^9}},ExpressionUUID->"e2d94d72-08d2-4480-a27f-\
-a737f1ff8aa5"]
-}, Open  ]],
+   3.857416937150961*^9, 3.857416953112644*^9}, {3.857422073415004*^9, 
+   3.857422153262538*^9}},
+ CellLabel->
+  "In[187]:=",ExpressionUUID->"e2d94d72-08d2-4480-a27f-a737f1ff8aa5"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`t$$ = 6.365076303482056, Typeset`show$$ = 
+   DynamicModuleBox[{$CellContext`t$$ = 13.45200777053833, Typeset`show$$ = 
     True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"\:540d\:79f0\:672a\:5b9a\:7fa9\"", Typeset`specs$$ = {{
-      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {108., 113.}}, 
+      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {110., 115.}}, 
     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
     
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -1313,19 +1354,19 @@ Cell[BoxData[
          Typeset`skipInitDone$$}, "Body" :> ListLinePlot[{
          Table[{$CellContext`i, \
 $CellContext`DuralTension[$CellContext`i][$CellContext`t$$]/$CellContext`\
-convmmhg}, {$CellContext`i, 1, $CellContext`n - 1}], 
+convcmH2O}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`STFactor \
 ($CellContext`SyrinxTension[$CellContext`i][$CellContext`t$$]/$CellContext`\
-convmmhg)}, {$CellContext`i, 1, $CellContext`n - 1}], 
+convcmH2O)}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`SFFactor \
 $CellContext`SubarachnoidFlow[$CellContext`i][$CellContext`t$$]}, \
 {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`CFFactor \
 $CellContext`CanalFlow[$CellContext`i][$CellContext`t$$]}, {$CellContext`i, 
-           1, $CellContext`n}]}, $CellContext`range1 = 200; 
+           1, $CellContext`n}]}, $CellContext`range1 = 20; 
         PlotRange -> {-$CellContext`range1, $CellContext`range1}, 
         PlotLegends -> {
-         "Dural Tension", "Canal Tenxion", "Subarachnoid Flow", "CanalFlow"}],
+         "Dural Tension", "Canal Tension", "Subarachnoid Flow", "CanalFlow"}],
        "Specifications" :> {{$CellContext`t$$, 0, 20, AnimationRate -> 0.5, 
          AppearanceElements -> {
           "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
@@ -1334,7 +1375,7 @@ $CellContext`CanalFlow[$CellContext`i][$CellContext`t$$]}, {$CellContext`i,
        ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
         "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
         True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
-     ImageSizeCache->{576., {144., 150.}},
+     ImageSizeCache->{576., {146., 152.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -1408,8 +1449,51 @@ $CellContext`CanalFlow[$CellContext`i][$CellContext`t$$]}, {$CellContext`i,
    3.856914881641654*^9, 3.8569151622903767`*^9, 3.856916871719755*^9, 
    3.856916942141624*^9, 3.856917580651731*^9, 3.856918564737253*^9, 
    3.856923794611444*^9, 3.8569804727560368`*^9, 3.856981788571146*^9, 
-   3.857242806974824*^9, 3.85741657426763*^9, 3.857416947819819*^9},
- CellLabel->"Out[59]=",ExpressionUUID->"e68d94c8-1fb0-4f54-b157-5264775f73a8"]
+   3.857242806974824*^9, 3.85741657426763*^9, 3.857416947819819*^9, {
+   3.857422132140571*^9, 3.857422154196516*^9}, 3.857424675175274*^9},
+ CellLabel->
+  "Out[187]=",ExpressionUUID->"0e9ed32f-6544-4858-bcc8-58ec231bdafd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"SubarachnoidFlow", "[", "50", "]"}], "[", "5.4", "]"}], "/.", 
+    "sol"}], ")"}], "*", 
+  RowBox[{"10", "^", "6"}]}]], "Input",
+ CellChangeTimes->{{3.8574189858013983`*^9, 3.857418999007*^9}, {
+  3.857420183585183*^9, 3.8574202013920927`*^9}, {3.8574203180957527`*^9, 
+  3.857420348535067*^9}, {3.8574203840876217`*^9, 3.857420384575001*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"1b5c08e5-e8a9-44ec-b03d-74529391fe83"],
+
+Cell[BoxData[
+ RowBox[{"{", "1529.8500236265604`", "}"}]], "Output",
+ CellChangeTimes->{
+  3.857419000356028*^9, {3.857420185502035*^9, 3.857420201910631*^9}, 
+   3.857420350508451*^9, 3.857420385840971*^9},
+ CellLabel->"Out[70]=",ExpressionUUID->"5f1e71e5-692e-49d8-81de-f3b38b2e07e8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"10", "*", 
+  RowBox[{"convmmhg", "/", 
+   RowBox[{"R", "[", 
+    RowBox[{"[", "5", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857421086948471*^9, 3.857421129930306*^9}, {
+  3.857421313930779*^9, 3.857421316657378*^9}, {3.857421791351775*^9, 
+  3.857421792950531*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"9330697d-3a10-4e42-b4d3-f984f9a178fb"],
+
+Cell[BoxData["0.1940081306752037`"], "Output",
+ CellChangeTimes->{{3.857421108248569*^9, 3.857421130619072*^9}, 
+   3.857421317221784*^9, 3.857421795176732*^9},
+ CellLabel->"Out[79]=",ExpressionUUID->"727e2319-4876-481e-a43e-41877121efe9"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1981,7 +2065,8 @@ Cell[BoxData[{
    3.855788726215563*^9, 3.8557887294080276`*^9}, {3.855797760208164*^9, 
    3.855797840722958*^9}, {3.8557979811233053`*^9, 3.8557979824423647`*^9}, {
    3.855798015297038*^9, 3.8557980853585567`*^9}},
- CellLabel->"In[40]:=",ExpressionUUID->"f221f023-26bc-43bd-9aed-96c85eedaf42"],
+ CellLabel->
+  "In[188]:=",ExpressionUUID->"f221f023-26bc-43bd-9aed-96c85eedaf42"],
 
 Cell[BoxData[
  RowBox[{
@@ -1999,7 +2084,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{
                RowBox[{"DuralTensionNorm", "[", "i", "]"}], "[", "t", "]"}], 
-              "/", "convmmhg"}]}], "}"}], ",", 
+              "/", "convcmH2O"}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -2014,7 +2099,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTensionNorm", "[", "i", "]"}], "[", "t", "]"}],
-                "/", "convmmhg"}]}]}], "}"}], ",", 
+                "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -2048,8 +2133,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -2223,17 +2307,20 @@ Cell[BoxData[
    3.8557944374555473`*^9, 3.855794467835372*^9}, {3.855794500364974*^9, 
    3.855794500552034*^9}, {3.8557968917084627`*^9, 3.855796918486635*^9}, {
    3.855797879723628*^9, 3.8557978908574543`*^9}, {3.85579836318224*^9, 
-   3.855798383925557*^9}, {3.857416967710616*^9, 3.857416974316987*^9}},
- CellLabel->"In[60]:=",ExpressionUUID->"8002aa1c-1266-4e10-af66-7a6c9bf71c03"],
+   3.855798383925557*^9}, {3.857416967710616*^9, 3.857416974316987*^9}, {
+   3.857424762292223*^9, 3.857424784644993*^9}, {3.857424816527327*^9, 
+   3.857424820220149*^9}, {3.857424862966971*^9, 3.857424868751107*^9}},
+ CellLabel->
+  "In[198]:=",ExpressionUUID->"8002aa1c-1266-4e10-af66-7a6c9bf71c03"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`t$$ = 0.6020596027374268, Typeset`show$$ = 
+   DynamicModuleBox[{$CellContext`t$$ = 4.473902702331543, Typeset`show$$ = 
     True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"\:540d\:79f0\:672a\:5b9a\:7fa9\"", Typeset`specs$$ = {{
-      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {108., 113.}}, 
+      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {110., 115.}}, 
     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
     
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -2246,16 +2333,16 @@ Cell[BoxData[
          Typeset`skipInitDone$$}, "Body" :> ListLinePlot[{
          Table[{$CellContext`i, \
 $CellContext`DuralTensionNorm[$CellContext`i][$CellContext`t$$]/$CellContext`\
-convmmhg}, {$CellContext`i, 1, $CellContext`n - 1}], 
+convcmH2O}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`STFactor \
 ($CellContext`SyrinxTensionNorm[$CellContext`i][$CellContext`t$$]/$\
-CellContext`convmmhg)}, {$CellContext`i, 1, $CellContext`n - 1}], 
+CellContext`convcmH2O)}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`SFFactor \
 $CellContext`SubarachnoidFlowNorm[$CellContext`i][$CellContext`t$$]}, \
 {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`CFFactor \
 $CellContext`CanalFlowNorm[$CellContext`i][$CellContext`t$$]}, \
-{$CellContext`i, 1, $CellContext`n}]}, $CellContext`range1 = 200; 
+{$CellContext`i, 1, $CellContext`n}]}, $CellContext`range1 = 20; 
         PlotRange -> {-$CellContext`range1, $CellContext`range1}, 
         PlotLegends -> {
          "Dural Tension", "Canal Tension", "Subarachnoid Flow", "CanalFlow"}],
@@ -2267,7 +2354,7 @@ $CellContext`CanalFlowNorm[$CellContext`i][$CellContext`t$$]}, \
        ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
         "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
         True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
-     ImageSizeCache->{576., {144., 150.}},
+     ImageSizeCache->{576., {146., 152.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -2281,8 +2368,10 @@ $CellContext`CanalFlowNorm[$CellContext`i][$CellContext`t$$]}, \
  CellChangeTimes->{3.855797896244751*^9, 3.855798103375009*^9, 
   3.855798387663972*^9, 3.856916890817819*^9, 3.856916955478547*^9, 
   3.856923807310795*^9, 3.856980489138464*^9, 3.857242798309108*^9, 
-  3.8574168021277637`*^9, 3.857416985517611*^9},
- CellLabel->"Out[60]=",ExpressionUUID->"61c63171-4639-4134-9aec-469b2ca2131e"]
+  3.8574168021277637`*^9, 3.857416985517611*^9, 3.857424785319413*^9, 
+  3.857424822548018*^9, 3.857424869775508*^9},
+ CellLabel->
+  "Out[198]=",ExpressionUUID->"9b2beab9-4ede-4679-b2b1-a95fa82d1deb"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2304,7 +2393,7 @@ Cell[BoxData[{
        RowBox[{
         RowBox[{"n", "/", "2"}], "-", "1"}]}], "]"}], ",", 
      RowBox[{"{", 
-      RowBox[{"50", "rs"}], "}"}], ",", 
+      RowBox[{"20", "rs"}], "}"}], ",", 
      RowBox[{"Table", "[", 
       RowBox[{"rs", ",", 
        RowBox[{"n", "/", "2"}]}], "]"}]}], "]"}]}], ";"}], "\n", 
@@ -2723,8 +2812,10 @@ Cell[BoxData[{
   3.8557988635764637`*^9, 3.8557988793684263`*^9}, {3.855799198967079*^9, 
   3.855799199806418*^9}, {3.855799257548971*^9, 3.855799273385398*^9}, {
   3.856916801021946*^9, 3.8569168021173887`*^9}, {3.856923222762826*^9, 
-  3.856923246713359*^9}, {3.8572427717571163`*^9, 3.857242774427816*^9}},
- CellLabel->"In[49]:=",ExpressionUUID->"00ed777c-5340-43a0-bc83-90dca6f6ff9b"],
+  3.856923246713359*^9}, {3.8572427717571163`*^9, 3.857242774427816*^9}, {
+  3.857426417871773*^9, 3.8574264181962137`*^9}},
+ CellLabel->
+  "In[218]:=",ExpressionUUID->"00ed777c-5340-43a0-bc83-90dca6f6ff9b"],
 
 Cell[BoxData[
  RowBox[{
@@ -2742,7 +2833,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{
                RowBox[{"DuralTensionSb", "[", "i", "]"}], "[", "t", "]"}], 
-              "/", "convmmhg"}]}], "}"}], ",", 
+              "/", "convcmH2O"}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -2757,7 +2848,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTensionSb", "[", "i", "]"}], "[", "t", "]"}], 
-               "/", "convmmhg"}]}]}], "}"}], ",", 
+               "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -2791,8 +2882,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -2968,19 +3058,20 @@ Cell[BoxData[
    3.855797879723628*^9, 3.8557978908574543`*^9}, {3.85579836318224*^9, 
    3.855798383925557*^9}, {3.855799311935781*^9, 3.8557993357114058`*^9}, {
    3.856916829863332*^9, 3.8569168493639307`*^9}, {3.856923201528833*^9, 
-   3.856923211488185*^9}, {3.8574169921719637`*^9, 
-   3.8574169988198013`*^9}},ExpressionUUID->"dd84964f-ed93-4746-bc88-\
-258088f46a44"]
+   3.856923211488185*^9}, {3.8574169921719637`*^9, 3.8574169988198013`*^9}, {
+   3.8574248885755663`*^9, 3.857424915561722*^9}},
+ CellLabel->
+  "In[227]:=",ExpressionUUID->"dd84964f-ed93-4746-bc88-258088f46a44"]
 }, Open  ]],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`t$$ = 1.2500009536743164`, Typeset`show$$ = 
+   DynamicModuleBox[{$CellContext`t$$ = 4.43046236038208, Typeset`show$$ = 
     True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"\:540d\:79f0\:672a\:5b9a\:7fa9\"", Typeset`specs$$ = {{
-      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {108., 113.}}, 
+      Hold[$CellContext`t$$], 0, 20}}, Typeset`size$$ = {529., {110., 115.}}, 
     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
     
     DynamicBox[Manipulate`ManipulateBoxes[
@@ -2993,21 +3084,20 @@ Cell[BoxData[
          Typeset`skipInitDone$$}, "Body" :> ListLinePlot[{
          Table[{$CellContext`i, \
 $CellContext`DuralTensionSb[$CellContext`i][$CellContext`t$$]/$CellContext`\
-convmmhg}, {$CellContext`i, 1, $CellContext`n - 1}], 
+convcmH2O}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`STFactor \
 ($CellContext`SyrinxTensionSb[$CellContext`i][$CellContext`t$$]/$CellContext`\
-convmmhg)}, {$CellContext`i, 1, $CellContext`n - 1}], 
+convcmH2O)}, {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`SFFactor \
 $CellContext`SubarachnoidFlowSb[$CellContext`i][$CellContext`t$$]}, \
 {$CellContext`i, 1, $CellContext`n - 1}], 
          Table[{$CellContext`i, $CellContext`CFFactor \
 $CellContext`CanalFlowSb[$CellContext`i][$CellContext`t$$]}, {$CellContext`i, 
-           1, $CellContext`n}]}, $CellContext`range1 = 200; 
+           1, $CellContext`n}]}, $CellContext`range1 = 20; 
         PlotRange -> {-$CellContext`range1, $CellContext`range1}, 
         PlotLegends -> {
-         "Dural Tension", "Syrinx Tenxion", "Subarachnoid Flow", 
-          "CanalFlow"}], 
-      "Specifications" :> {{$CellContext`t$$, 0, 20, AnimationRate -> 0.5, 
+         "Dural Tension", "Canal Tension", "Subarachnoid Flow", "CanalFlow"}],
+       "Specifications" :> {{$CellContext`t$$, 0, 20, AnimationRate -> 0.5, 
          AppearanceElements -> {
           "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
            "DirectionButton"}}}, 
@@ -3015,7 +3105,7 @@ $CellContext`CanalFlowSb[$CellContext`i][$CellContext`t$$]}, {$CellContext`i,
        ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
         "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
         True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
-     ImageSizeCache->{576., {144., 150.}},
+     ImageSizeCache->{576., {146., 152.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -3031,8 +3121,10 @@ $CellContext`CanalFlowSb[$CellContext`i][$CellContext`t$$]}, {$CellContext`i,
    3.856916812431656*^9, 3.856916832356762*^9}, 3.856916906314822*^9, 
    3.856916966659347*^9, 3.856917566841103*^9, 3.85692325804362*^9, 
    3.8569238209538383`*^9, 3.8569805019396133`*^9, 3.857242788499401*^9, 
-   3.857416838929057*^9},
- CellLabel->"Out[58]=",ExpressionUUID->"ec2b189c-4d70-4518-a214-c7e7126c990b"]
+   3.857416838929057*^9, {3.857424902500052*^9, 3.8574249172317667`*^9}, 
+   3.8574264240319777`*^9},
+ CellLabel->
+  "Out[227]=",ExpressionUUID->"1ee51045-bb0d-471e-b4f5-7f96e38975e5"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3046,7 +3138,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"renderRate", "=", "0.02"}], ";"}]], "Input",
  CellChangeTimes->{{3.856922943375297*^9, 3.856922959513315*^9}},
- CellLabel->"In[60]:=",ExpressionUUID->"65599add-fc49-42f1-8397-157ad390a502"],
+ CellLabel->"In[57]:=",ExpressionUUID->"65599add-fc49-42f1-8397-157ad390a502"],
 
 Cell[CellGroupData[{
 
@@ -3071,7 +3163,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{
                RowBox[{"DuralTension", "[", "i", "]"}], "[", "t", "]"}], "/", 
-              "convmmhg"}]}], "}"}], ",", 
+              "convcmH2O"}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3086,7 +3178,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTension", "[", "i", "]"}], "[", "t", "]"}], 
-               "/", "convmmhg"}]}]}], "}"}], ",", 
+               "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3120,8 +3212,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -3143,9 +3234,10 @@ Cell[BoxData[
    3.856917334489155*^9, 3.8569173361122723`*^9}, {3.856917612415472*^9, 
    3.856917644942389*^9}, {3.856917943341531*^9, 3.856917963148271*^9}, {
    3.8569186433272877`*^9, 3.856918668143022*^9}, {3.8569229683468103`*^9, 
-   3.856922971178084*^9}, {3.857417008465766*^9, 
-   3.857417013989171*^9}},ExpressionUUID->"1f5153a8-495c-42e9-9e88-\
-f90e6ea2ea7c"],
+   3.856922971178084*^9}, {3.857417008465766*^9, 3.857417013989171*^9}, {
+   3.857424929398849*^9, 3.857424943101993*^9}},
+ CellLabel->
+  "In[210]:=",ExpressionUUID->"1f5153a8-495c-42e9-9e88-f90e6ea2ea7c"],
 
 Cell[BoxData[
  RowBox[{
@@ -3160,9 +3252,7 @@ totalAnimation.mp4\>\"", ",", "totalAnimationOneway"}], "]"}], ";"}]], "Input",\
    3.856917673321806*^9, 3.856917674101869*^9}, {3.856918719931465*^9, 
    3.856918721860256*^9}, 3.85692396344101*^9},
  CellLabel->
-  "In[104]:=",ExpressionUUID->"0c74f776-172c-4a59-9b56-8cdd26aa924a"],
-
-Cell[CellGroupData[{
+  "In[211]:=",ExpressionUUID->"0c74f776-172c-4a59-9b56-8cdd26aa924a"],
 
 Cell[BoxData[
  RowBox[{
@@ -3172,17 +3262,8 @@ Cell[BoxData[
 totalAnimation.gif\>\"", ",", " ", "totalAnimationOneway"}], "]"}], 
   ";"}]], "Input",
  CellChangeTimes->{{3.8557736153542347`*^9, 3.855773637614575*^9}, {
-   3.856918726305643*^9, 3.8569187276835823`*^9}, 
-   3.856923967640614*^9},ExpressionUUID->"540898c8-b651-476b-bde7-\
-6a441c2710d5"],
-
-Cell[BoxData["\<\"/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_\
-analysis/totalAnimation.gif\"\>"], "Output",
- CellChangeTimes->{3.8557738518345346`*^9, 3.855773962100998*^9, 
-  3.8569175392054253`*^9},
- CellLabel->
-  "Out[285]=",ExpressionUUID->"cfd5bd9c-5f91-4296-98f4-134029d78134"]
-}, Open  ]]
+   3.856918726305643*^9, 3.8569187276835823`*^9}, 3.856923967640614*^9},
+ CellLabel->"In[60]:=",ExpressionUUID->"540898c8-b651-476b-bde7-6a441c2710d5"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3209,7 +3290,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"DuralTensionNorm", "[", "i", "]"}], "[", "t", "]"}], 
-               "/", "convmmhg"}]}]}], "}"}], ",", 
+               "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3224,7 +3305,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTensionNorm", "[", "i", "]"}], "[", "t", "]"}],
-                "/", "convmmhg"}]}]}], "}"}], ",", 
+                "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3258,8 +3339,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -3281,9 +3361,10 @@ Cell[BoxData[
    3.856917334489155*^9, 3.8569173361122723`*^9}, {3.856917612415472*^9, 
    3.856917644942389*^9}, {3.856917943341531*^9, 3.856918026299604*^9}, {
    3.8569229761725407`*^9, 3.856922978665954*^9}, {3.856923634269635*^9, 
-   3.8569236560333643`*^9}, {3.857417027765777*^9, 
-   3.857417032533174*^9}},ExpressionUUID->"6710c41f-ebc7-4b53-ab34-\
-3091862c2b15"],
+   3.8569236560333643`*^9}, {3.857417027765777*^9, 3.857417032533174*^9}, {
+   3.857425292268556*^9, 3.857425304954259*^9}},
+ CellLabel->
+  "In[212]:=",ExpressionUUID->"6710c41f-ebc7-4b53-ab34-3091862c2b15"],
 
 Cell[CellGroupData[{
 
@@ -3297,13 +3378,15 @@ totalAnimationNorm.mp4\>\"", ",", "totalAnimationNorm"}], "]"}]], "Input",
   3.8557073839970427`*^9}, {3.856917152599985*^9, 3.856917152983387*^9}, {
   3.856917673321806*^9, 3.856917674101869*^9}, {3.8569180513450937`*^9, 
   3.85691805589686*^9}},
- CellLabel->"In[63]:=",ExpressionUUID->"a97d2c0e-304d-4b3e-86c9-2de30c8e1449"],
+ CellLabel->
+  "In[215]:=",ExpressionUUID->"a97d2c0e-304d-4b3e-86c9-2de30c8e1449"],
 
 Cell[BoxData["\<\"/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_\
 analysis/totalAnimationNorm.mp4\"\>"], "Output",
  CellChangeTimes->{3.8569181515208282`*^9, 3.856922954024425*^9, 
-  3.856980884262998*^9},
- CellLabel->"Out[63]=",ExpressionUUID->"50eaf53c-e909-4da5-831d-14c971e9da78"]
+  3.856980884262998*^9, 3.857425700425619*^9, 3.8574259235704527`*^9},
+ CellLabel->
+  "Out[215]=",ExpressionUUID->"415c22c3-380e-4418-9047-bb7da4e2db30"]
 }, Open  ]]
 }, Open  ]],
 
@@ -3330,7 +3413,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{
                RowBox[{"DuralTensionSb", "[", "i", "]"}], "[", "t", "]"}], 
-              "/", "convmmhg"}]}], "}"}], ",", 
+              "/", "convcmH2O"}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3345,7 +3428,7 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"SyrinxTensionSb", "[", "i", "]"}], "[", "t", "]"}], 
-               "/", "convmmhg"}]}]}], "}"}], ",", 
+               "/", "convcmH2O"}]}]}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "1", ",", 
              RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], ",", "       ", 
@@ -3379,8 +3462,7 @@ Cell[BoxData[
          RowBox[{"Central", " ", "Canal", " ", "Flow"}], " ", "*)"}], 
         "\[IndentingNewLine]", "}"}], ",", "  ", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"range1", " ", "=", " ", "200"}], ";", "\[IndentingNewLine]", 
-        
+        RowBox[{"range1", " ", "=", " ", "20"}], ";", "\[IndentingNewLine]", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -3404,16 +3486,10 @@ Cell[BoxData[
    3.8569186433272877`*^9, 3.856918668143022*^9}, {3.856922897969836*^9, 
    3.856922913850428*^9}, {3.856922986789074*^9, 3.856922989473558*^9}, 
    3.85692351679169*^9, 3.8569236956535273`*^9, 3.85692587413478*^9, {
-   3.8574170387257433`*^9, 
-   3.857417043476873*^9}},ExpressionUUID->"1bd7706a-f152-4bac-a150-\
-1a73fb14c9de"],
-
-Cell[BoxData["totalAnimatio"], "Input",
- CellChangeTimes->{{3.856925866253193*^9, 
-  3.856925868627804*^9}},ExpressionUUID->"be5475dd-c59a-4984-aa63-\
-ddcb9c4c16a7"],
-
-Cell[CellGroupData[{
+   3.8574170387257433`*^9, 3.857417043476873*^9}, {3.857425316905963*^9, 
+   3.8574253256178007`*^9}, 3.857425626424542*^9},
+ CellLabel->
+  "In[228]:=",ExpressionUUID->"1bd7706a-f152-4bac-a150-1a73fb14c9de"],
 
 Cell[BoxData[
  RowBox[{
@@ -3426,22 +3502,8 @@ totalAnimationSb.mp4\>\"", ",", "%"}], "]"}], ";"}]], "Input",
   3.8569239093450117`*^9}, {3.856924647182472*^9, 3.8569246673484097`*^9}, {
   3.856925878421212*^9, 3.856925888181122*^9}, {3.857242905839827*^9, 
   3.857242910424533*^9}},
- CellLabel->"In[62]:=",ExpressionUUID->"4e5e4f1c-71fa-4851-bb91-82bca9043529"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "sysffmpeg", 
-   "\"\:5236\:9650\:4ed8\:304d\:306eFFmpeg\:3092\:4f7f\:7528\:3057\:3066\:3044\
-\:307e\:3059\:ff0e\:3088\:308a\:5b8c\:5168\:306a\:30b3\:30fc\:30c7\:30c3\:30af\
-\:30b5\:30dd\:30fc\:30c8\:306e\:305f\:3081\:306b\:306fFFmpeg\:3092\:30a4\:30f3\
-\:30b9\:30c8\:30fc\:30eb\:3057\:3066\:304f\:3060\:3055\:3044\:ff0e\"", 2, 62, 
-   2, 23799436232920804766, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellChangeTimes->{3.857242916277646*^9},
  CellLabel->
-  "\:8a55\:4fa1\:4e2d\:ff1aIn[62]:=",ExpressionUUID->"0eea95ea-a0b3-46d4-a4e8-\
-2d7077484317"]
-}, Open  ]]
+  "In[229]:=",ExpressionUUID->"4e5e4f1c-71fa-4851-bb91-82bca9043529"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3509,13 +3571,27 @@ canalFlow.mp4\"\>"], "Output",
   3.855688540083387*^9, 3.855688729944264*^9, 3.855688828289521*^9, {
    3.8556888672834997`*^9, 3.8556888943586073`*^9}, 3.8556890155708838`*^9},
  CellLabel->"Out[50]=",ExpressionUUID->"2f981a83-daf2-4d8a-b0e5-3882cad8390f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"10", "/", "4000"}], "*", "100", "*", "100", "*", "100"}]], "Input",\
+
+ CellChangeTimes->{{3.8574186606032257`*^9, 3.85741869347291*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"7b63df12-5387-46b0-b3c9-b41583755aac"],
+
+Cell[BoxData["2500"], "Output",
+ CellChangeTimes->{{3.857418663579422*^9, 3.857418694226766*^9}},
+ CellLabel->"Out[64]=",ExpressionUUID->"17892000-924b-40df-94fd-cde55702213c"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1265, 962},
-WindowMargins->{{292, Automatic}, {38, Automatic}},
+WindowMargins->{{25, Automatic}, {-67, Automatic}},
 PrintingCopies->1,
 PrintingPageRange->{1, Automatic},
 PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
@@ -3540,67 +3616,79 @@ Cell[580, 22, 569, 8, 69, "Chapter",ExpressionUUID->"55835633-d11e-4712-bd69-1d0
 Cell[1152, 32, 154, 3, 30, "Input",ExpressionUUID->"d7d806bb-83e7-48c3-9169-8c805caf1e49"],
 Cell[1309, 37, 183, 3, 47, "Input",ExpressionUUID->"eae7ec3d-03e4-48a1-a668-060fa651465f"],
 Cell[CellGroupData[{
-Cell[1517, 44, 195, 3, 67, "Section",ExpressionUUID->"27e3a0d2-b8ab-436f-964a-17c9ba9a4a56"],
+Cell[1517, 44, 367, 9, 47, "Input",ExpressionUUID->"bab0be10-d986-4862-8fb8-91705c829e8d"],
+Cell[1887, 55, 215, 3, 34, "Output",ExpressionUUID->"472655b0-ad21-4f9e-893f-4e80664d4acf"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1737, 51, 40950, 996, 2486, "Input",ExpressionUUID->"d0555d94-fb64-4e8f-b9bf-25161a7ab3b9",
+Cell[2139, 63, 294, 7, 47, "Input",ExpressionUUID->"3009ac57-c2cd-4deb-8c45-ec723f65df91"],
+Cell[2436, 72, 171, 2, 34, "Output",ExpressionUUID->"3aa81c2a-a474-42c6-9866-9d9a058bf4f5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2644, 79, 195, 3, 67, "Section",ExpressionUUID->"27e3a0d2-b8ab-436f-964a-17c9ba9a4a56"],
+Cell[2842, 84, 41266, 999, 2508, "Input",ExpressionUUID->"d0555d94-fb64-4e8f-b9bf-25161a7ab3b9",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[42690, 1049, 14988, 243, 377, "Input",ExpressionUUID->"e2d94d72-08d2-4480-a27f-a737f1ff8aa5",
+Cell[44111, 1085, 207, 4, 34, "Output",ExpressionUUID->"bd509481-dcae-4468-864e-1784ddba9095"],
+Cell[44321, 1091, 15052, 243, 377, "Input",ExpressionUUID->"e2d94d72-08d2-4480-a27f-a737f1ff8aa5",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[59376, 1336, 7414, 118, 317, "Output",ExpressionUUID->"0e9ed32f-6544-4858-bcc8-58ec231bdafd"],
+Cell[CellGroupData[{
+Cell[66815, 1458, 501, 11, 30, "Input",ExpressionUUID->"1b5c08e5-e8a9-44ec-b03d-74529391fe83"],
+Cell[67319, 1471, 286, 5, 34, "Output",ExpressionUUID->"5f1e71e5-692e-49d8-81de-f3b38b2e07e8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[67642, 1481, 377, 8, 30, "Input",ExpressionUUID->"9330697d-3a10-4e42-b4d3-f984f9a178fb"],
+Cell[68022, 1491, 239, 3, 34, "Output",ExpressionUUID->"727e2319-4876-481e-a43e-41877121efe9"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[68310, 1500, 165, 3, 67, "Section",ExpressionUUID->"dfe9b115-bc69-4eed-be30-1b2f740344f9"],
+Cell[68478, 1505, 25341, 563, 966, "Input",ExpressionUUID->"f221f023-26bc-43bd-9aed-96c85eedaf42"],
+Cell[93822, 2070, 15109, 243, 377, "Input",ExpressionUUID->"8002aa1c-1266-4e10-af66-7a6c9bf71c03",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[108934, 2315, 3097, 58, 317, "Output",ExpressionUUID->"9b2beab9-4ede-4679-b2b1-a95fa82d1deb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112068, 2378, 166, 3, 67, "Section",ExpressionUUID->"d5c3dc5f-704d-43ad-b581-26d71d0429e9"],
+Cell[CellGroupData[{
+Cell[112259, 2385, 15155, 432, 1007, "Input",ExpressionUUID->"00ed777c-5340-43a0-bc83-90dca6f6ff9b",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[127417, 2819, 15167, 244, 377, "Input",ExpressionUUID->"dd84964f-ed93-4746-bc88-258088f46a44",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
 }, Open  ]],
-Cell[57693, 1295, 7337, 116, 313, "Output",ExpressionUUID->"e68d94c8-1fb0-4f54-b157-5264775f73a8"]
+Cell[142599, 3066, 3188, 60, 317, "Output",ExpressionUUID->"1ee51045-bb0d-471e-b4f5-7f96e38975e5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[65067, 1416, 165, 3, 67, "Section",ExpressionUUID->"dfe9b115-bc69-4eed-be30-1b2f740344f9"],
-Cell[65235, 1421, 25337, 562, 966, "Input",ExpressionUUID->"f221f023-26bc-43bd-9aed-96c85eedaf42"],
-Cell[90575, 1985, 14967, 241, 377, "Input",ExpressionUUID->"8002aa1c-1266-4e10-af66-7a6c9bf71c03",
- CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[105545, 2228, 3024, 56, 313, "Output",ExpressionUUID->"61c63171-4639-4134-9aec-469b2ca2131e"]
+Cell[145824, 3131, 164, 3, 67, "Section",ExpressionUUID->"50c03885-59c6-46b6-85bc-e0fc403bbc2f"],
+Cell[145991, 3136, 224, 4, 30, "Input",ExpressionUUID->"65599add-fc49-42f1-8397-157ad390a502"],
+Cell[CellGroupData[{
+Cell[146240, 3144, 186, 3, 54, "Subsection",ExpressionUUID->"27084e38-de51-4c8b-9bd4-dc9b83dabb40"],
+Cell[146429, 3149, 3816, 90, 313, "Input",ExpressionUUID->"1f5153a8-495c-42e9-9e88-f90e6ea2ea7c"],
+Cell[150248, 3241, 635, 13, 47, "Input",ExpressionUUID->"0c74f776-172c-4a59-9b56-8cdd26aa924a"],
+Cell[150886, 3256, 443, 9, 47, "Input",ExpressionUUID->"540898c8-b651-476b-bde7-6a441c2710d5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[108606, 2289, 166, 3, 67, "Section",ExpressionUUID->"d5c3dc5f-704d-43ad-b581-26d71d0429e9"],
+Cell[151366, 3270, 177, 3, 54, "Subsection",ExpressionUUID->"d1d3ee80-2115-4da1-a6d4-c20ef514c8c6"],
+Cell[151546, 3275, 3865, 91, 313, "Input",ExpressionUUID->"6710c41f-ebc7-4b53-ab34-3091862c2b15"],
 Cell[CellGroupData[{
-Cell[108797, 2296, 15100, 430, 1007, "Input",ExpressionUUID->"00ed777c-5340-43a0-bc83-90dca6f6ff9b",
- CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[123900, 2728, 15101, 244, 377, "Input",ExpressionUUID->"dd84964f-ed93-4746-bc88-258088f46a44",
- CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
-}, Open  ]],
-Cell[139016, 2975, 3122, 59, 313, "Output",ExpressionUUID->"ec2b189c-4d70-4518-a214-c7e7126c990b"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[142175, 3039, 164, 3, 67, "Section",ExpressionUUID->"50c03885-59c6-46b6-85bc-e0fc403bbc2f"],
-Cell[142342, 3044, 224, 4, 30, "Input",ExpressionUUID->"65599add-fc49-42f1-8397-157ad390a502"],
-Cell[CellGroupData[{
-Cell[142591, 3052, 186, 3, 54, "Subsection",ExpressionUUID->"27084e38-de51-4c8b-9bd4-dc9b83dabb40"],
-Cell[142780, 3057, 3752, 90, 313, "Input",ExpressionUUID->"1f5153a8-495c-42e9-9e88-f90e6ea2ea7c"],
-Cell[146535, 3149, 635, 13, 47, "Input",ExpressionUUID->"0c74f776-172c-4a59-9b56-8cdd26aa924a"],
-Cell[CellGroupData[{
-Cell[147195, 3166, 425, 10, 47, "Input",ExpressionUUID->"540898c8-b651-476b-bde7-6a441c2710d5"],
-Cell[147623, 3178, 294, 5, 34, "Output",ExpressionUUID->"cfd5bd9c-5f91-4296-98f4-134029d78134"]
+Cell[155436, 3370, 591, 11, 47, "Input",ExpressionUUID->"a97d2c0e-304d-4b3e-86c9-2de30c8e1449"],
+Cell[156030, 3383, 342, 5, 34, "Output",ExpressionUUID->"415c22c3-380e-4418-9047-bb7da4e2db30"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[147966, 3189, 177, 3, 54, "Subsection",ExpressionUUID->"d1d3ee80-2115-4da1-a6d4-c20ef514c8c6"],
-Cell[148146, 3194, 3801, 91, 313, "Input",ExpressionUUID->"6710c41f-ebc7-4b53-ab34-3091862c2b15"],
-Cell[CellGroupData[{
-Cell[151972, 3289, 587, 10, 47, "Input",ExpressionUUID->"a97d2c0e-304d-4b3e-86c9-2de30c8e1449"],
-Cell[152562, 3301, 292, 4, 34, "Output",ExpressionUUID->"50eaf53c-e909-4da5-831d-14c971e9da78"]
-}, Open  ]]
+Cell[156421, 3394, 164, 3, 54, "Subsection",ExpressionUUID->"7c93b5f8-9531-48e0-89aa-1d2e8b296241"],
+Cell[156588, 3399, 3964, 92, 313, "Input",ExpressionUUID->"1bd7706a-f152-4bac-a150-1a73fb14c9de"],
+Cell[160555, 3493, 591, 12, 47, "Input",ExpressionUUID->"4e5e4f1c-71fa-4851-bb91-82bca9043529"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[152903, 3311, 164, 3, 54, "Subsection",ExpressionUUID->"7c93b5f8-9531-48e0-89aa-1d2e8b296241"],
-Cell[153070, 3316, 3876, 92, 313, "Input",ExpressionUUID->"1bd7706a-f152-4bac-a150-1a73fb14c9de"],
-Cell[156949, 3410, 165, 3, 30, "Input",ExpressionUUID->"be5475dd-c59a-4984-aa63-ddcb9c4c16a7"],
+Cell[161183, 3510, 163, 3, 54, "Subsection",ExpressionUUID->"0c87f514-49b9-40d3-805a-1f28075a2d7a"],
+Cell[161349, 3515, 1628, 39, 257, "Input",ExpressionUUID->"3bf280db-b3e0-4d6d-9b59-cedad8b16010"],
 Cell[CellGroupData[{
-Cell[157139, 3417, 587, 11, 47, "Input",ExpressionUUID->"4e5e4f1c-71fa-4851-bb91-82bca9043529"],
-Cell[157729, 3430, 603, 12, 23, "Message",ExpressionUUID->"0eea95ea-a0b3-46d4-a4e8-2d7077484317"]
-}, Open  ]]
+Cell[163002, 3558, 369, 7, 47, "Input",ExpressionUUID->"e169376e-72a4-43fc-b2e1-f8f45e5d92e4"],
+Cell[163374, 3567, 355, 5, 34, "Output",ExpressionUUID->"2f981a83-daf2-4d8a-b0e5-3882cad8390f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[158381, 3448, 163, 3, 54, "Subsection",ExpressionUUID->"0c87f514-49b9-40d3-805a-1f28075a2d7a"],
-Cell[158547, 3453, 1628, 39, 257, "Input",ExpressionUUID->"3bf280db-b3e0-4d6d-9b59-cedad8b16010"],
-Cell[CellGroupData[{
-Cell[160200, 3496, 369, 7, 47, "Input",ExpressionUUID->"e169376e-72a4-43fc-b2e1-f8f45e5d92e4"],
-Cell[160572, 3505, 355, 5, 34, "Output",ExpressionUUID->"2f981a83-daf2-4d8a-b0e5-3882cad8390f"]
+Cell[163766, 3577, 250, 5, 30, "Input",ExpressionUUID->"7b63df12-5387-46b0-b3c9-b41583755aac"],
+Cell[164019, 3584, 176, 2, 34, "Output",ExpressionUUID->"17892000-924b-40df-94fd-cde55702213c"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
