@@ -1,0 +1,259 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext}
+\title{On the Pathophysiology of Syringomyelia}
+\author{Han Soo Chang, M.D.}
+\date{}
+
+\begin{document}
+\maketitle
+\subsection{Introduction}
+
+The pathophysiology of syringomyelia is still poorly understood. There is a substantial variety of hypotheses in the literature\textsuperscript{1--13}, and their explanations on the mechanisms of syrinx generation differ widely. We may, however, identify some points of consensus among many researchers.
+
+Syrinx generation is related to some derangement in CSF flow in the spinal subarachnoid space.
+
+Syrinx generation is related to some derangement in CSF flow in the spinal subarachnoid space.
+
+Several studies support the first point\textsuperscript{14--17}, although not without disagreement\textsuperscript{13,18}. Numerous studies support the second point in the case of Chiari I malformation, where the herniated tonsils partially obstruct the subarachnoid CSF movement\textsuperscript{7,19--22}. Altered subarachnoid CSF movement also plays an essential role in syringomyelia associated with arachnopathy\textsuperscript{23--26}.
+
+The problem, however, is where this communicating channel is and what mechanism generates the syrinx. On these points, there is no solid experimental or clinical evidence, and the opinions of researchers deviate widely. Gardner et al.\textsuperscript{1} thought that the central canal communicates the syrinx and the fourth ventricle, and arterial pressure waves exerted on the central canal generate the syrinx. Williams et al.~also postulated the communication through the central canal, but for the syrinx generation mechanism, he emphasized the craniospinal pressure gradient produced by Valsalva maneuver et al.
+
+On the other hand, Ball and Dayan\textsuperscript{4} assumed that CSF enters the syrinx through the perivascular space of arteries penetrating the spinal cord. This idea is also supported by recent researchers. Heiss et al\textsuperscript{7} proposed that the piston-like movement of the cerebellar tonsils in Chiari-I patients generate pressure waves in the spinal subarachnoid space, which subsequently drive CSF into the syrinx through the perivascular space. Stoodley et al.~also considered the perivascular space as the communicating channel, but he assumed the arterial pulse pressure as the driving force of CSF\textsuperscript{\textbf{stoodley2000mechanisms?}}
+
+All these assumptions are not proven and remain hypothetical. Although the perivascular space theory seems to be favored by recent researchers, there still remains the possibility that a thin communicating channel exists between the syrinx and the fourth ventricle\textsuperscript{\textbf{chang2021hypothesis?}}.
+
+In our opinion, the main theoretical problems reside in the following points.
+
+No theory can explain how CSF enters from the low-pressure subarachnoid space to the high-pressure syrinx cavity and remains inside.
+
+No theory can explain the pathophysiological mechanism of syringomyelia in a unified fashion.
+
+As to the first point, there are different types of syringomyelia, such as Chiari-I-malformation-related and spinal-arachnopathy-related. The Chiari-I-malformation-related syringomyelia is further divided into communicating and non-communicating. For each of them, current theories appear to assume a distinct mechanism of syrinx generation. However, it may be more natural to conjecture some common mechanism underlying these different types of syringomyelia\textsuperscript{\textbf{stoodley2000mechanisms?}}.
+
+The second point is theoretically important but difficult to solve. Clearly, the syrinx cavity must have higher pressure than the subarachnoid space\textsuperscript{7,27--29}. Therefore, merely assuming a communicating channel is insufficient to explain how CSF enters the syrinx and remains inside against this pressure gradient. Even if we assume that there is a certain time window where the subarachnoid pressure exceeds the syrinx pressure, it does not explain how the CSF is retained inside the syrinx after that time window is passed.
+
+The current article is part of our attempt to solve the above theoretical problems. In our previous paper\textsuperscript{\textbf{chang2021hypothesis?}}, we proposed a hypothesis that if there is a direction-selective resistance in the spinal subarachnoid space, it causes a one-way valve like effect on a CSF channel inside the spinal cord, leading to accumulation of CSF and generation of a syrinx. This hypothesis was attractive because the herniated tonsil in Chiari-I malformation could be easily conceived as a direction-selective resistance, and it could provide a common mechanism underlying different types of syringomyelia.
+
+In that article, however, we just drew a rough sketch of this process and left out a detailed explanation. In the current article, we will describe in detail how a direction-selective resistance in the subarachnoid space generates a one-way valve mechanism in the CSF channel inside the spinal cord.
+
+For this purpose, we used a mathematical model simulating the CSF movement of the spine---a revised version of our previous model\textsuperscript{11,12}. This model of the spinal CSF movement was a lumped parameter model with multiple compartments\textsuperscript{30} and it assumed the existence of a patent central canal. We placed a direction-selective resistance in a certain point in the spinal subarachnoid space in this model, and observed how it affects the CSF flow in the central canal.
+
+Material and Method
+
+We can analyze the motion of biological fluids such as blood and CSF using computer simulation. However, the biological fluids flow inside elastic conduits and require different analysis techniques from those used in the engineering field, where the boundary of the conduit is supposed to be solid. For this purpose, researchers widely used the lumped parameter model\textsuperscript{30,31}. This model considers the fluid flow inside an elastic conduit in analogy to the electric flow in an electric circuit. The accumulation of electricity in a capacitor represents the expansion of the elastic arterial wall and the accompanying pressure elevation. An electrical resistor represents the frictional resistance to flow. This model has a wide variety. For example, it may model the whole cardiovascular system as one electric circuit, or it may model it as a synthesis of multiple compartments of an electric circuit\textsuperscript{30,31}.
+
+The purpose of the current study was not to make a quantitatively precise model of the spinal CSF flow but to make a basic model that reveals the phenomenon underlying the generation of syringomyelia. For this purpose, we adopted a revised version of our previous lumped parameter model with multiple compartments.
+
+Previously, we developed a mathematical model that simulated the CSF flow in the spine\textsuperscript{11};\textsuperscript{12}{]}. This model was a multiple-compartment version of a 1-dimensional lumped parameter model, and could describe the CSF movement in the whole spine. Figure 1 shows the scheme of this model representing the CSF system of the spine as an electric circuit. The whole circuit could be described by a system of differential equations, and its behavior to a cranial pressure wave (described as a boundary condition on the cranial points) could be numerically calculated using a computer software.
+
+This time, we improved the previous model as follows.
+
+We increased the number of compartments from 10 to 100, thereby making the model more precise.
+
+We estimated the values of the parameters (the capacitance and resistance of each component) of the model as follows so that the model will become more realistic.
+
+First, we set the length of the modeled spinal cord to be 1 meter.
+
+The resistance of the subarachnoid space (R) was estimated using the following equations of Poisseuille\textsuperscript{32--34}.
+
+\[\Delta P=\frac{8\pi \mu{}LQ}{A^{2}}=RQ\]
+
+\[\Delta P\]: Pressure difference between the adjacent compartments
+
+Q: flow speed per unit surface
+
+\[\mu\]: viscosity coefficient. In this case, it was set to the value of water (0.0007).
+
+L: distance between the adjacent compartments. It was set to 1 cm.
+
+A: cross sectional area of the subarachnoid space. It was set to the value of a concentric annulus\textsuperscript{34} with the outer diameter of 1cm and the inner diameter of 0.7 cm (\[1.6\times{}10^{-4} (m^2)\])
+
+Thus, \textbf{R} was calculated to be \[6872\hspace{0.2cm}(Pa\cdot{}sec/m^3)\]
+
+The resistance of the central canal (r) was estimated using the same equation with \[A\] set to \[\pi{}(10^{-4})^2\hspace{0.1cm}(m^2)\], i.e.~the cross sectional area of a tube with a diameter of 100 \[\mu{}m\]. Thus, \textbf{r} was calculated to be \[1.78\times10^{11}\hspace{0.2cm}(Pa\cdot{}sec/m^3)\]
+
+We determined the capacitance (\[C_{sub}\])corresponding to the dural elasticity so that the pressure-wave velocity determined by the time constant (\[RC\]) will roughly correspond to the pressure-wave velocity of the downward CSF wave observed in phase-contrast MRI of normal individuals. Thus, we set \[C_{sub}=0.1\hspace{0.2cm}(m^3/Pa\cdot{}sec)\].
+
+The scheme of the constructed electric circuit model is shown in Figure 1. This model represents the CSF movement in the spine as electric flow along multiple compartments of capacitances connected with resistors. The values of the resistors and capacitors are shown in Table 1.
+
+The behavior of this electric circuit is described by a set of differential equations with the voltage at the cranial nodes as the boundary condition. In the previous articles\textsuperscript{11,12}, we only analyzed the transient behavior of the model to a sudden pressure increase on the cranial side of the subarachnoid space. This analysis was useful in simulating the situation of coughing or Valsalva maneuvers. In this article, however, we analyzed the steady-state response of the model to an oscillating cranial pressure wave simulating the normal cardiac pulsation of the CSF.
+
+We numerically solved the differential equations using a computer software (Mathematica version 12, Wolfram Research, Champaign, IL, U.S.A.). The boundary conditions were set as follows. (1) The voltage at the two cranial nodes was set to a sine wave oscillating around 100 mmHg with an amplitude of 20 mmHg at one cycle per second. (2) The initial dural pressure was set at 100 mmHg in all segments. The step of the numerical solution was set to 1/5000 second, and the solution was calculated from zero to 20 seconds. The obtained solution was displayed as a movie and was exported to a file in the mp4 format.
+
+Results
+
+This section presents the system's responses as videos. Each video displays either all or some of the following four values simultaneously: namely, the dural tension (voltage in D capacitors in Figure 2), the canal tension (voltages in C capacitors), the subarachnoid CSF flow (flows in R resistors), and the canal flow (flows in r resistors). We plotted the node position on the x-axis and the values at that node on the y-axis. The pressure values are shown in \[cmH_2O\], the flows in \[ml/sec\]. To plot different ranges of values in a single plot, we multiplied the following values with certain coefficients: namely, the canal tension with 50, the subarachnoid flow with 0.005, and the canal flow with \[1.5\times10^{5}\]. We plotted the rightward flow in the positive and the leftward flow in the negative direction.
+
+Video 1 shows the original system's response to the sine wave input on the cranial side. In this condition, CSF makes a smooth to-and-fro movement in the subarachnoid space with the corresponding pressure wave along the dura and the central canal. This response corresponds to the CSF dynamics in a normal individual.
+
+In Video 2, we increased the subarachnoid resistance \[R_{25}\] by 20 times, thereby simulating a simple block of the subarachnoid flow in both directions. In this condition, the dural tension showed a pressure drop at node 25, corresponding to the increased resistance both in caudal and rostral flow phases. This pressure drop caused an increase in canal flow in a direction identical to the subarachnoid CSF flow. This increased canal flow caused a transient increase in canal pressure distal to the block and a decrease proximal to the block. However, these pressure changes alternated according to the flow phase and did not produce a sustained condition.
+
+In Video 3, we replaced the subarachnoid resistor \[R_{25}\] with a one-way valve that selectively resisted flow in the caudal direction by 50 times. This time, the dural tension curve showed a pressure drop across node 25, appearing only during the caudal-flow phase. Canal flow showed alternating increase in caudal and rostral directions according to the flow phase, which was similar to that in the simple block above. However, there was a significant difference. Sustained high pressure appeared in the central canal distal to the valve, and some sustained low pressure in the segment proximal to the valve. The canal flow near node 25 markedly increased caudally in the caudal-flow phase and rostrally in the rostral-flow phase. We took out the canal flow and showed it in Video 4. Observing this video, we can see that the cumulative total of the caudal flow is larger than that of the rostral flow, and it means that the CSF is virtually pumped caudally at node 25.
+
+Discussion
+
+In this article, we theoretically analyzed the CSF movement in the spinal cord using a lumped parameter model with multiple components. It simulated a system with an elastic tube (dura) containing an elastic cylindrical material (spinal cord) that itself contained a fluid channel (the central canal). When we placed a direction-selective resistor in the subarachnoid channel and evoked a to-and-fro pressure wave on this system, it produced a sustained pressure elevation in the segment distal to the direction-selective resistor. This phenomenon may explain the pathogenesis of syringomyelia both in Chiari I malformation and syringomyelia associated with arachnopathy.
+
+Subarachnoid pressure affects the pressure inside the central canal. As seen in Figure 2, the absolute pressure inside the central canal is the sum of the subarachnoid and canal pressure (voltages of \[C_k\] and \[D_k\] in electrical terms). Suppose a one-way valve selectively resists caudal flow in the subarachnoid space at point A, and CSF makes a to-and-fro movement across it. The caudal-flow phase creates a pressure drop across point A, making the subarachnoid pressure in the distal segment smaller, and it reduces the absolute canal pressure in the distal segment. Thus, the pressure gradient in the central canal across point A increases, which increases the distal CSF flow in the canal at that point.
+
+On the contrary, the rostral flow does not create a pressure drop. Although some of the CSF pumped caudally will flow back rostrally, its amount will be smaller. The net result will be that some CSF is pumped caudally in one cycle of the to-and-fro movement. Thus, CSF gradually accumulates in the distal segment of the resistance. We hypothesize that this is the mechanism underlying the syrinx generation.
+
+This hypothesis solves the theoretical problems pointed out in the Introduction. A one-way valve in subarachnoid space creates an asymmetry of the pressure gradient between the caudal and rostral flow phases in the central canal. This asymmetric alternation of pressure gradient effectively pumps CSF caudally, creating sustained pressure elevation in the caudal segment. In other words, the energy of the to-and-fro CSF movement is translated via the one-way valve into the creation and sustenance of syringomyelia.
+
+Direction-selective resistance to CSF flow is not an imaginative assumption but actually exists in patients. In Chiari-I malformation, the herniated tonsils move like a ball-valve, displaced caudally during the caudal flow and rostrally during the rostral flow. Higher velocity observed in the phase-contrast MRI studies suggests that it selectively impedes the caudal CSF flow more than the cranial flow. This direction-selective resistance was demonstrated by Williams in direct measurements in Chiari-I patients and became the basis of his theory\textsuperscript{\textbf{williams1981simultaneous?}}.
+
+Also, there is a possibility that some types of arachnoid pathology function as one-way valves. In 2014, we reported a case of thoracic arachnoid web associated with syringomyelia, in which phase-contrast MRI detected one-way-valve-like behavior of the arachnoid web\textsuperscript{26}. We found an obliquely oriented arachnoid web that reminded us of a one-way valve in surgery. Thus, our hypothesis may also solve the second theoretical problem that we pointed out in the Introduction. Namely, we may consider the presence of a one-way valve in spinal subarachnoid space as a common mechanism underlying both Chiari-I-related and arachnopathy-related syringomyelia.
+
+Our theory assumes that the arterial-pulse generated to-and-fro CSF movement provides the energy for syrinx generation. It is compatible with Stoodley et al.'s experimental result that syrinx maintenance is dependent on arterial pulsation\textsuperscript{\textbf{stoodley2000mechanisms?}}. In this study, the authors showed that
+
+Conclusions
+
+References
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-gardner1958mechanism}{}}%
+\CSLLeftMargin{1. }
+\CSLRightInline{Gardner WJ, Angel J. The mechanism of syringomyelia and its surgical correction. \emph{Clin Neurosurgery}. 1958;6:131-140.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-williams1980pathogenesis}{}}%
+\CSLLeftMargin{2. }
+\CSLRightInline{Williams B. \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1437943}{On the pathogenesis of syringomyelia: A review}. \emph{Journal of the Royal Society of Medicine}. 1980;73(11):798-806.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-milhorat1999chiari}{}}%
+\CSLLeftMargin{3. }
+\CSLRightInline{Milhorat TH, Chou MW, Trinidad EM, et al. Chiari {I} malformation redefined: Clinical and radiographic findings for 364 symptomatic patients. \emph{Neurosurgery}. 1999;44(5):1005-1017. doi:\href{https://doi.org/10.1097/00006123-199905000-00042}{10.1097/00006123-199905000-00042}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ball1972pathogenesis}{}}%
+\CSLLeftMargin{4. }
+\CSLRightInline{Ball MJ, Dayan AD. Pathogenesis of syringomyelia. \emph{Lancet (London, England)}. 1972;2(7781):799-801. doi:\href{https://doi.org/10.1016/s0140-6736(72)92152-6}{10.1016/s0140-6736(72)92152-6}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-klekamp2002pathophysiology}{}}%
+\CSLLeftMargin{5. }
+\CSLRightInline{Klekamp J. The pathophysiology of syringomyelia - historical overview and current concept. \emph{Acta Neurochirurgica}. 2002;144(7):649-664. doi:\href{https://doi.org/10.1007/s00701-002-0944-3}{10.1007/s00701-002-0944-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-duboulay1974mechanism}{}}%
+\CSLLeftMargin{6. }
+\CSLRightInline{Boulay G du, Shah SH, Currie JC, Logue V. The mechanism of hydromyelia in {Chiari} type 1 malformations. \emph{The British Journal of Radiology}. 1974;47(561):579-587. doi:\href{https://doi.org/10.1259/0007-1285-47-561-579}{10.1259/0007-1285-47-561-579}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-heiss1999elucidating}{}}%
+\CSLLeftMargin{7. }
+\CSLRightInline{Heiss JD, Patronas N, DeVroom HL, et al. Elucidating the pathophysiology of syringomyelia. \emph{Journal of Neurosurgery}. 1999;91(4):553-562. doi:\href{https://doi.org/10.3171/jns.1999.91.4.0553}{10.3171/jns.1999.91.4.0553}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-milhorat1993anatomical}{}}%
+\CSLLeftMargin{8. }
+\CSLRightInline{Milhorat TH, Miller JI, Johnson WD, Adler DE, Heger IM. Anatomical basis of syringomyelia occurring with hindbrain lesions. \emph{Neurosurgery}. 1993;32(5):748-754; discussion 754. doi:\href{https://doi.org/10.1227/00006123-199305000-00008}{10.1227/00006123-199305000-00008}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stoodley2000pathophysiology}{}}%
+\CSLLeftMargin{9. }
+\CSLRightInline{Stoodley MA. \href{https://www.ncbi.nlm.nih.gov/pubmed/10839277}{Pathophysiology of syringomyelia}. \emph{Journal of Neurosurgery}. 2000;92(6):1069-1070; author reply 1071-1073.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-terae1994increased}{}}%
+\CSLLeftMargin{10. }
+\CSLRightInline{Terae S, Miyasaka K, Abe S, Abe H, Tashiro K. \href{https://www.ncbi.nlm.nih.gov/pubmed/8183451}{Increased pulsatile movement of the hindbrain in syringomyelia associated with the {Chiari} malformation: Cine-{MRI} with presaturation bolus tracking}. \emph{Neuroradiology}. 1994;36(2):125-129.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chang2003hypothesis}{}}%
+\CSLLeftMargin{11. }
+\CSLRightInline{Chang HS, Nakagawa H. \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1738338}{Hypothesis on the pathophysiology of syringomyelia based on simulation of cerebrospinal fluid dynamics}. \emph{Journal of Neurology, Neurosurgery, and Psychiatry}. 2003;74(3):344-347.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chang2004theoretical}{}}%
+\CSLLeftMargin{12. }
+\CSLRightInline{Chang HS, Nakagawa H. \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1763562}{Theoretical analysis of the pathophysiology of syringomyelia associated with adhesive arachnoiditis}. \emph{Journal of Neurology, Neurosurgery, and Psychiatry}. 2004;75(5):754-757.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-greitz2006unraveling}{}}%
+\CSLLeftMargin{13. }
+\CSLRightInline{Greitz D. Unraveling the riddle of syringomyelia. \emph{Neurosurgical Review}. 2006;29(4):251-263; discussion 264. doi:\href{https://doi.org/10.1007/s10143-006-0029-5}{10.1007/s10143-006-0029-5}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ellertsson1969syringomyelia}{}}%
+\CSLLeftMargin{14. }
+\CSLRightInline{Ellertsson AB. Syringomyelia and other cystic spinal cord lesions. \emph{Acta Neurologica Scandinavica}. 1969;45(4):403-417. doi:\href{https://doi.org/10.1111/j.1600-0404.1969.tb01254.x}{10.1111/j.1600-0404.1969.tb01254.x}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ellertsson1969myelocystographic}{}}%
+\CSLLeftMargin{15. }
+\CSLRightInline{Ellertsson AB, Greitz T. \href{https://www.ncbi.nlm.nih.gov/pubmed/5820121}{Myelocystographic and fluorescein studies to demonstrate communication between intramedullary cysts and the cerebrospinal fluid space}. \emph{Acta Neurologica Scandinavica}. 1969;45(4):418-430.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-li1987conventional}{}}%
+\CSLLeftMargin{16. }
+\CSLRightInline{Li KC, Chui MC. \href{https://www.ncbi.nlm.nih.gov/pubmed/3101451}{Conventional and {CT} metrizamide myelography in {Arnold}-{Chiari} {I} malformation and syringomyelia}. \emph{AJNR American journal of neuroradiology}. 1987;8(1):11-17.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-heiss2019origin}{}}%
+\CSLLeftMargin{17. }
+\CSLRightInline{Heiss JD, Jarvis K, Smith RK, et al. Origin of {Syrinx} {Fluid} in {Syringomyelia}: {A} {Physiological} {Study}. \emph{Neurosurgery}. 2019;84(2):457-468. doi:\href{https://doi.org/10.1093/neuros/nyy072}{10.1093/neuros/nyy072}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-koyanagi1997surgical}{}}%
+\CSLLeftMargin{18. }
+\CSLRightInline{Koyanagi I, Iwasaki Y, Hida K, Abe H, Isu T, Akino M. Surgical treatment supposed natural history of the tethered cord with occult spinal dysraphism. \emph{Child's Nervous System: ChNS: Official Journal of the International Society for Pediatric Neurosurgery}. 1997;13(5):268-274. doi:\href{https://doi.org/10.1007/s003810050081}{10.1007/s003810050081}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wolpert1994chiari}{}}%
+\CSLLeftMargin{19. }
+\CSLRightInline{Wolpert SM, Bhadelia RA, Bogdan AR, Cohen AR. \href{https://www.ncbi.nlm.nih.gov/pubmed/7976942}{Chiari {I} malformations: Assessment with phase-contrast velocity {MR}}. \emph{AJNR American journal of neuroradiology}. 1994;15(7):1299-1308.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bhadelia1995cerebrospinal}{}}%
+\CSLLeftMargin{20. }
+\CSLRightInline{Bhadelia RA, Bogdan AR, Wolpert SM, Lev S, Appignani BA, Heilman CB. Cerebrospinal fluid flow waveforms: Analysis in patients with {Chiari} {I} malformation by means of gated phase-contrast {MR} imaging velocity measurements. \emph{Radiology}. 1995;196(1):195-202. doi:\href{https://doi.org/10.1148/radiology.196.1.7784567}{10.1148/radiology.196.1.7784567}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hofmann2000phasecontrast}{}}%
+\CSLLeftMargin{21. }
+\CSLRightInline{Hofmann E, Warmuth-Metz M, Bendszus M, Solymosi L. \href{https://www.ncbi.nlm.nih.gov/pubmed/10669242}{Phase-contrast {MR} imaging of the cervical {CSF} and spinal cord: Volumetric motion analysis in patients with {Chiari} {I} malformation}. \emph{AJNR American journal of neuroradiology}. 2000;21(1):151-158.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-quigley2004cerebrospinal}{}}%
+\CSLLeftMargin{22. }
+\CSLRightInline{Quigley MF, Iskandar B, Quigley ME, Nicosia M, Haughton V. Cerebrospinal fluid flow in foramen magnum: Temporal and spatial patterns at {MR} imaging in volunteers and in patients with {Chiari} {I} malformation. \emph{Radiology}. 2004;232(1):229-236. doi:\href{https://doi.org/10.1148/radiol.2321030666}{10.1148/radiol.2321030666}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-klekamp1997treatment}{}}%
+\CSLLeftMargin{23. }
+\CSLRightInline{Klekamp J, Batzdorf U, Samii M, Bothe HW. Treatment of syringomyelia associated with arachnoid scarring caused by arachnoiditis or trauma. \emph{Journal of Neurosurgery}. 1997;86(2):233-240. doi:\href{https://doi.org/10.3171/jns.1997.86.2.0233}{10.3171/jns.1997.86.2.0233}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brodbelt2003altered}{}}%
+\CSLLeftMargin{24. }
+\CSLRightInline{Brodbelt AR, Stoodley MA, Watling AM, Tu J, Burke S, Jones NR. Altered subarachnoid space compliance and fluid flow in an animal model of posttraumatic syringomyelia. \emph{Spine}. 2003;28(20):E413-419. doi:\href{https://doi.org/10.1097/01.BRS.0000092346.83686.B9}{10.1097/01.BRS.0000092346.83686.B9}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-heiss2012pathophysiology}{}}%
+\CSLLeftMargin{25. }
+\CSLRightInline{Heiss JD, Snyder K, Peterson MM, et al. Pathophysiology of primary spinal syringomyelia. \emph{Journal of Neurosurgery Spine}. 2012;17(5):367-380. doi:\href{https://doi.org/10.3171/2012.8.SPINE111059}{10.3171/2012.8.SPINE111059}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chang2014dorsal}{}}%
+\CSLLeftMargin{26. }
+\CSLRightInline{Chang HS, Nagai A, Oya S, Matsui T. Dorsal spinal arachnoid web diagnosed with the quantitative measurement of cerebrospinal fluid flow on magnetic resonance imaging. \emph{Journal of Neurosurgery Spine}. 2014;20(2):227-233. doi:\href{https://doi.org/10.3171/2013.10.SPINE13395}{10.3171/2013.10.SPINE13395}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-serwayr.a.2016fluids}{}}%
+\CSLLeftMargin{27. }
+\CSLRightInline{Serway, R. A. Fluids and {Solids}. In: \emph{College Physics}. 11th ed. Cengage Learning; 2016:267-319.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-davis1989mechanisms}{}}%
+\CSLLeftMargin{28. }
+\CSLRightInline{Davis CH, Symon L. Mechanisms and treatment in post-traumatic syringomyelia. \emph{British Journal of Neurosurgery}. 1989;3(6):669-674. doi:\href{https://doi.org/10.3109/02688698908992690}{10.3109/02688698908992690}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ellertsson1970distending}{}}%
+\CSLLeftMargin{29. }
+\CSLRightInline{Ellertsson AB, Greitz T. The distending force in the production of communicating syringomyelia. \emph{Lancet (London, England)}. 1970;1(7658):1234. doi:\href{https://doi.org/10.1016/s0140-6736(70)91829-5}{10.1016/s0140-6736(70)91829-5}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-shi2011review}{}}%
+\CSLLeftMargin{30. }
+\CSLRightInline{Shi Y, Lawford P, Hose R. Review of {Zero}-{D} and 1-{D} {Models} of {Blood} {Flow} in the {Cardiovascular} {System}. \emph{BioMedical Engineering OnLine}. 2011;10(1):33. doi:\href{https://doi.org/10.1186/1475-925X-10-33}{10.1186/1475-925X-10-33}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kokalari2013review}{}}%
+\CSLLeftMargin{31. }
+\CSLRightInline{Kokalari I, Karaja T, Guerrisi M. Review on lumped parameter method for modeling the blood flow in systemic arteries. \emph{J Biomed Sci Eng}. 2013;6(1):92-99.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brook1999numerical}{}}%
+\CSLLeftMargin{32. }
+\CSLRightInline{Brook BS, Falle S, Pedley TJ. Numerical solutions for unsteady gravity-driven flows in collapsible tubes: Evolution and roll-wave instability of a steady state. \emph{Journal of Fluid Mechanics}. 1999;396:223-256.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-sherwin2003computational}{}}%
+\CSLLeftMargin{33. }
+\CSLRightInline{Sherwin SJ, Formaggia L, Peiro J, Franke V. Computational modelling of {1D} blood flow with variable mechanical properties and its application to the simulation of wave propagation in the human arterial system. \emph{International journal for numerical methods in fluids}. 2003;43(6-7):673-700.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-huilgol2020fast}{}}%
+\CSLLeftMargin{34. }
+\CSLRightInline{Huilgol RR, Georgiou GC. A fast numerical scheme for the {Poiseuille} flow in a concentric annulus. \emph{Journal of Non-Newtonian Fluid Mechanics}. 2020;285:104401. doi:\href{https://doi.org/10.1016/j.jnnfm.2020.104401}{10.1016/j.jnnfm.2020.104401}}
+
+\end{CSLReferences}
+
+\backmatter
+\end{document}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: naturemag-doi.bst
+Database file #1: my_library.bib
+Warning--I didn't find a database entry for "@kokalari2013review"
+You've used 37 entries,
+            2380 wiz_defined-function locations,
+            1255 strings with 17337 characters,
+and the built_in function-call counts, 15620 in all, are:
+= -- 1155
+> -- 372
+< -- 0
++ -- 186
+- -- 93
+* -- 2046
+:= -- 1722
+add.period$ -- 110
+call.type$ -- 37
+change.case$ -- 40
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 1299
+empty$ -- 1417
+format.name$ -- 122
+if$ -- 3086
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 314
+newline$ -- 194
+num.names$ -- 37
+pop$ -- 180
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 218
+stack$ -- 0
+substring$ -- 1011
+swap$ -- 1326
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 103
+width$ -- 39
+write$ -- 438
+(There was 1 warning)
