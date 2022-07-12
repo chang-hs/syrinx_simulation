@@ -1,6 +1,8 @@
 \documentclass[fleqn,10pt]{wlscirep}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{newfloat}
+\DeclareFloatingEnvironment{video}
 \title{Direction-Selective Resistance to Cerebrospinal-Fluid Flow As
 the Mechanism of Syrinx Generation in Syringomyelia}
 
@@ -8,13 +10,15 @@ the Mechanism of Syrinx Generation in Syringomyelia}
 \affil{Department of Neurosurgery, Tokai University\\Isehara, Japan}
 
 \keywords{syringomyelia, pathophysiology, simulation}
-
+\input{embed_video.tex}
 \begin{abstract}
     The pathophysiology of syringomyelia is not well understood. The main
     theoretical problem is how cerebrospinal fluid (CSF) enters from
-    low-pressure subarachnoid space to high-pressure syrinx and stays
-    there.
-\end{abstract} \begin{document}
+    low-pressure subarachnoid space to high-pressure syrinx and remains
+    inside the syrinx. We approached this problem with computer simulation
+    of the CSF flow in the spine.
+\end{abstract}
+\begin{document}
 
 \flushbottom
 \maketitle
@@ -24,7 +28,6 @@ the Mechanism of Syrinx Generation in Syringomyelia}
 %
 \thispagestyle{empty}
 
-\noindent Please note: Abbreviations should be introduced at the first mention in the main text – no abbreviations lists. Suggested structure of main text (not enforced) is provided below.
 
 \section*{Introduction}
 
@@ -33,9 +36,9 @@ of hypotheses exist in the literature \cite{gardner1958mechanism,
 williams1980pathogenesis, milhorat1999chiari, ball1972pathogenesis,
 klekamp2002pathophysiology, duboulay1974mechanism, heiss1999elucidating,
 milhorat1993anatomical, stoodley2000pathophysiology, terae1994increased,
-chang2003hypothesis, chang2004theoretical, greitz2006unraveling}, but
-they provide widely different explanations on the mechanisms of syrinx
-generation.  Most researchers, nevertheless, seem to agree on the following
+chang2003hypothesis, chang2004theoretical, greitz2006unraveling}, but they
+provide widely different explanations on the mechanisms of syrinx
+generation.  Nevertheless, most researchers seem to agree on the following
 points. First, the syrinx fluid is identical to the CSF, and there should
 be some communication between the syrinx and the subarachnoid space. This
 point is supported by many studies \cite{ellertsson1969syringomyelia,
@@ -46,8 +49,9 @@ subarachnoid space causes syrinx both in Chiari-I malformation
 \cite{wolpert1994chiari, bhadelia1995cerebrospinal, heiss1999elucidating,
 hofmann2000phasecontrast, quigley2004cerebrospinal} and subarachnoid
 arachnopathy \cite{klekamp1997treatment, brodbelt2003altered,
-heiss2012pathophysiology, chang2014dorsal}. The cerebellar tonsils hamper
-the CSF flow in the former and adhesive arachnoiditis in the latter.
+heiss2012pathophysiology, chang2014dorsal}. Notably, the cerebellar tonsil
+deranges the CSF flow in the former and adhesive arachnoiditis in the
+latter.
 
 The problem, however, is where this communicating channel resides and what
 mechanism generates the syrinx. On these points, there is no solid
@@ -133,7 +137,7 @@ fluids such as blood and CSF. Such bodily fluids move inside flexible
 tubes. It, therefore, requires different analysis techniques from those
 used in the engineering field, where the boundary of the conduit is
 supposed to be solid. For this purpose, researchers widely used lumped
-parameter models \cite{shi2011review, @kokalari2013review}. This model
+parameter models \cite{shi2011review, kokalari2013review}. This model
 considers the fluid flow inside a flexible tube in analogy to the flow of
 electricity in an electric circuit. The accumulation of electricity in a
 capacitor represents the expansion of a flexible tube and the accompanying
@@ -141,7 +145,7 @@ pressure elevation. An electrical resistor represents the frictional
 resistance to flow. This model has a wide variety. For example, it may
 model the whole cardiovascular system as one electric circuit, or it may
 model it as a synthesis of multiple compartments of electric circuits
-[@shi2011review; @kokalari2013review]. Our current model is the type of a
+\cite{shi2011review, kokalari2013review}. Our current model is the type of a
 lumped parameter model with multiple compartments.  In this study, we did
 not intend to make a quantitatively precise model of the spinal CSF flow
 but to make a basic model that reveals the phenomenon underlying the
@@ -167,8 +171,11 @@ cranial pressure wave (defined as a boundary condition on the cranial
 points).  This time, we improved the previous model as follows.
 
 \begin{itemize}
-    \item We increased the number of compartments from 10 to 100, thereby making the model more precise.
-    \item We estimated the values of the parameters (the capacitance and resistance of each component) of the model as follows so that the model will become more realistic.
+    \item We increased the number of compartments from 10 to 100,
+        thereby making the model more precise.
+    \item We estimated the values of the parameters
+        (the capacitance and resistance of each component)
+        of the model as follows so that the model will become more realistic.
         \begin{itemize}
             \item First, we set the length of the modeled spinal cord to be 1 meter.
             \item The resistance of the subarachnoid space ($R$) was
@@ -224,52 +231,99 @@ at 100 mmHg in all segments. We set the step of the numerical solution to
 1/5000 second and calculated the solution from zero to 20 seconds. We
 displayed the obtained solution as a movie in mp4 format.
 
-We analyzed the original normal system and two of its modifications.
+We analyzed the original normal system and two of its modifications. In the
+first modification, we simply increased the subarachnoid resistance at
+point 25 ($R_{25}$) by 20 times. In the second modification, we placed a
+direction-selective subarachnoid resistance at point 25, so that only the
+resistance to the caudal flow would be increased by 20 times.
 
 \section*{Results}
 
-We present the system's responses as videos. Each video displays either all
-or some of the following four values simultaneously: namely, the dural
-tension (voltage in D capacitors in Figure 2), the canal tension (voltages
-in C capacitors), the subarachnoid CSF flow (flows in R resistors), and the
-canal flow (flows in r resistors). We plotted the node position on the
-x-axis and the values at that node on the y-axis. The pressure values are
-shown in $cmH_2O$, the flows in $ml/sec$. To plot different ranges of
-values in a single plot, we multiplied the following values with certain
-coefficients: namely, the canal tension with 50, the subarachnoid flow with
-0.005, and the canal flow with $1.5\times10^{5}$. We plotted the
-rightward flow in the positive and the leftward flow in the negative
-direction.  Video 1 shows the original system's response to the sine wave
-input on the cranial side. In this condition, CSF makes a smooth to-and-fro
-movement in the subarachnoid space with the corresponding pressure wave
-along the dura and the central canal. This response corresponds to the CSF
-dynamics in a normal individual.
+We present the systems' responses to twenty cycles of to-and-fro waves as
+animations. The x-axis of each animation represents the 100 nodes of the
+circuit laid out from the cranial to caudal direction. The y-axis displays
+some of the following four measures: the dural tension (voltage in D
+capacitors in Figure 2), the canal tension (voltages in C capacitors), the
+subarachnoid CSF flow (flows in R resistors), and the canal flow (flows in
+r resistors). We plotted the caudal flow in the positive and the rostral
+flow in the negative direction. The pressure values are shown in $cmH_2O$,
+the flows in $ml/sec$. To plot the four measures in a single animation, we
+multiplied the following three measures---the canal tension, the
+subarachnoid CSF flow, and the canal flow---with the following
+coefficients, respectively: namely, the canal tension with 50, the
+subarachnoid flow with 0.005, and the canal flow with $1.5\times10^{5}$. 
 
-In Video 2, we increased the subarachnoid resistance $R_{25}$ by 20
-times, thereby simulating a simple block of the subarachnoid flow in both
-directions. In this condition, the dural tension showed a pressure drop at
-node 25, corresponding to the increased resistance both in caudal and
-rostral flow phases. This pressure drop caused an increase in canal flow in
-a direction identical to the subarachnoid CSF flow. This increased canal
-flow caused a transient increase in canal pressure distal to the block and
-a decrease proximal to the block. However, these pressure changes
-alternated according to the flow phase and did not produce a sustained
-condition.
+Video \ref{video:norm} shows the original system's response representing
+the normal condition. In this state, CSF makes a smooth to-and-fro movement
+in the subarachnoid space with the corresponding pressure wave along the
+dura and the central canal. CSF also makes to-and-fro movements in the
+canal.
 
-In Video 3, we replaced the subarachnoid resistor $R_{25}$
-with a one-way valve that selectively resisted flow in the caudal direction
-by 50 times. This time, the dural tension curve showed a pressure drop
-across node 25, appearing only during the caudal-flow phase. Canal flow
-showed alternating increase in caudal and rostral directions according to
-the flow phase, which was similar to that in the simple block above.
-However, there was a significant difference. Sustained high pressure
-appeared in the central canal distal to the valve, and some sustained low
-pressure in the segment proximal to the valve. The canal flow near node 25
-markedly increased caudally in the caudal-flow phase and rostrally in the
-rostral-flow phase. We took out the canal flow and showed it in Video 4.
-Observing this video, we can see that the cumulative total of the caudal
-flow is larger than that of the rostral flow, and it means that the CSF is
-virtually pumped caudally at node 25. 
+\begin{video}[hbt]
+    \embedvideo*{\includegraphics[width=\textwidth]{thumbnail_norm.jpg}}{totalAnimationNorm.mp4}
+    \caption{Video showing the normal circuit response}
+    \label{video:norm}
+\end{video}
+
+In Video \ref{video:simple_block}, we increased the subarachnoid resistance
+$R_{25}$ by 20 times, thereby simulating a simple block of the subarachnoid
+flow in both directions. In this condition, both the caudal and rostral
+flow along the resistance produced a drop of the dural tension downstream
+to the resistance, corresponding to the increased resistance both in the
+caudal and rostral flow phases. This pressure drop caused an increase in
+canal flow in the same direction as the subarachnoid flow. This increased
+canal flow caused a transient increase in the canal pressure distal to the
+block and a decrease proximal to the block. However, these pressure changes
+alternated along the alternation of the flow direction and did not produce
+a sustained pressure increase.
+
+\begin{video}[hbt]
+    \embedvideo*{\includegraphics[width=\textwidth]{thumbnail_simple_block.jpg}}{totalAnimationSb.mp4}
+    \caption{Video showing the response of the circuit with a simple
+    resistor at point 25}
+    \label{video:simple_block}
+\end{video}
+
+\begin{video}[hbt]
+    \embedvideo*{\includegraphics[width=\textwidth]{thumbnail_oneway.jpg}}{totalAnimation.mp4}
+    \caption{Video showing the response of the circuit with a
+    direction-selective resistor at point 25}
+    \label{video:oneway}
+\end{video}
+
+\begin{video}[hbt]
+    \embedvideo*{\includegraphics[width=\textwidth]{thumbnail_oneway.jpg}}{canalFlowOneway.mp4}
+    \caption{Video showing the canal flow in the model with
+    direction-selective resistance at point 25}
+    \label{video:canal_flow_oneway}
+\end{video}
+
+\begin{video}[hbt]
+    \embedvideo*{\includegraphics[width=\textwidth]{thumbnail_oneway.jpg}}{canalFlowComparison.mp4}
+    \caption{Video showing the canal flow in the two models: simple
+    resistance at point 25 and direction-selective resistance at point 25}
+    \label{video:canal_comparison}
+\end{video}
+
+In Video \ref{video:oneway}, we replaced the subarachnoid resistor $R_{25}$
+with a direction-selective resistor whose resistance to the rostral flow
+was unchanged but that to the caudal flow was increased by 20 times.  This
+time, as shown in Video \ref{video:oneway}, sustained high pressure
+appeared in the central canal in the segment distal to the replaced
+resistor, and sustained low pressure in the segment proximal to it.  This
+sustained pressure gradually accumulated as the flow cycle proceeded.  The
+dural tension showed a pressure drop at node 25 only during the caudal-flow
+phase.  The to-and-fro canal flow increased near the node 25 similarly to
+that in the simple block above, but, this time, the increase was larger in
+the caudal direction.  
+
+We took out the canal flow and showed it in Video 4.  Observing this video,
+we can see that the cumulative total of the caudal flow is larger than that
+of the rostral flow, and it means that the CSF is virtually pumped caudally
+at node 25. To further elucidate this point, we plotted the canal flow in
+the simple block as shown in Video \ref{video:simple_block} and that in the
+one-way block as shown in Video \ref{video:oneway}. We can clearly see in
+this video that the caudal flow in the canal is 
 
 
 \section*{Discussion}
@@ -277,31 +331,49 @@ virtually pumped caudally at node 25.
 In this article, we theoretically analyzed the CSF movement in the spinal
 cord using a lumped parameter model with multiple components. It simulated
 a system with an elastic tube (dura) containing an elastic cylindrical
-material (spinal cord) that itself contained a fluid channel (the central
+material (spinal cord) that itself had a fluid channel inside (the central
 canal). When we placed a direction-selective resistor in the subarachnoid
-channel and evoked a to-and-fro pressure wave on this system, it produced a
+space and evoked a to-and-fro pressure wave on this system, it produced a
 sustained pressure elevation in the segment distal to the
 direction-selective resistor. This phenomenon may explain the pathogenesis
 of syringomyelia both in Chiari I malformation and syringomyelia associated
 with arachnopathy.
 
 Subarachnoid pressure affects the pressure inside the central canal. As
-seen in Figure 2, the absolute pressure inside the central canal is the sum
-of the subarachnoid and canal pressure (voltages of $C_k$ and $D_k$ in
-electrical terms). Suppose a one-way valve selectively resists caudal flow
-in the subarachnoid space at point A, and CSF makes a to-and-fro movement
-across it. The caudal-flow phase creates a pressure drop across point A,
-making the subarachnoid pressure in the distal segment smaller, and it
-reduces the absolute canal pressure in the distal segment. Thus, the
-pressure gradient in the central canal across point A increases, which
-increases the distal CSF flow in the canal at that point.
+seen in Figure \ref{fig:circuit}, the absolute pressure inside the central
+canal is the sum of the subarachnoid and canal pressure (voltages of $C_k$
+and $D_k$ in electrical terms). Suppose a one-way valve selectively resists
+caudal flow in the subarachnoid space at point A. Caudal CSF flow creates a
+pressure drop across this valve, with the distal pressure smaller than the
+proximal one. It decreases the absolute canal pressure distal to point A
+because it is the sum of the subarachnoid pressure and the canal pressure.
+It, therefore, creates a pressure gradient in the central canal across
+point A, thereby increasing the distal CSF flow in the canal at that point
+(Figure \ref{fig:pump_close}).
 
-On the contrary, the rostral flow does not create a pressure drop. Although
-some of the CSF pumped caudally will flow back rostrally, its amount will
-be smaller. The net result will be that some CSF is pumped caudally in one
-cycle of the to-and-fro movement. Thus, CSF gradually accumulates in the
-distal segment of the resistance. We hypothesize that this is the mechanism
-underlying the syrinx generation.
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=\textwidth]{pumping_mechanism_close.jpg}
+    \caption{Increased central-canal flow across a direction-selective
+    resistance in the subarachnoid space}
+    \label{fig:pump_close}
+\end{figure}
+
+On the contrary, reverse flow, not encountering resistance, does not create
+a pressure drop (Figure \ref{fig:pump_open}). Although some of the CSF that
+had been pumped caudally during the caudal-flow phase will flow back
+rostrally, its amount will be smaller. The net result will be that some CSF
+is pumped caudally in one cycle of the to-and-fro movement. Thus, CSF
+gradually accumulates in the distal segment of the resistance (Video 3). We
+hypothesize that this is the mechanism underlying the syrinx generation.
+
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[width=\textwidth]{pumping_mechanism_open.jpg}
+    \caption{Normal central-canal flow across a direction-selective
+    resistance during the reverse flow}
+    \label{fig:pump_open}
+\end{figure}
 
 This hypothesis solves the theoretical problems pointed out in the
 Introduction. A one-way valve in subarachnoid space creates an asymmetry of
@@ -335,11 +407,6 @@ assumes that the arterial-pulse generated to-and-fro CSF movement provides
 the energy for syrinx generation. It is compatible with Stoodley et al.'s
 experimental result that syrinx maintenance is dependent on arterial
 pulsation \cite{stoodley2000mechanisms}. In this study, the authors showed that
-
-\begin{center}
-\includegraphics[width=\textwidth]{pumping_mechanism_close.jpg}
-\includegraphics[width=\textwidth]{pumping_mechanism_open.jpg}
-\end{center}
 
 \bibliography{my_library}
 

@@ -289,6 +289,14 @@
   \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{33},
   \doiprefix\url{10.1186/1475-925X-10-33} (\bibinfo{year}{2011}).
 
+\bibitem{kokalari2013review}
+\bibinfo{author}{Kokalari, I.}, \bibinfo{author}{Karaja, T.} \&
+  \bibinfo{author}{Guerrisi, M.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Review on lumped parameter method
+  for modeling the blood flow in systemic arteries}}.
+\newblock {\emph{\JournalTitle{J Biomed Sci Eng}}}
+  \textbf{\bibinfo{volume}{6}}, \bibinfo{pages}{92--99} (\bibinfo{year}{2013}).
+
 \bibitem{brook1999numerical}
 \bibinfo{author}{Brook, B.~S.}, \bibinfo{author}{Falle, S.} \&
   \bibinfo{author}{Pedley, T.~J.}

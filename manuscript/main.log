@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.7)  29 JUN 2022 16:46
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.7)  12 JUL 2022 11:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -559,35 +559,59 @@ LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+))
+(/home/chang/texlive/2022/texmf-dist/tex/latex/newfloat/newfloat.sty
+Package: newfloat 2019/09/02 v1.1l Defining new floating environments (AR)
+Package newfloat Info: Unsupported document class, or \@chapter 
+(newfloat)             was already redefined by another package.
+Package newfloat Info: \@chapter = macro:->\def \Hy@next {\Hy@MakeCurrentHrefAu
+to {\Hy@chapapp *}\Hy@raisedlink {\hyper@anchorstart {\@currentHref }\hyper@anc
+horend }}\ifnum \c@secnumdepth >\m@ne \ltx@IfUndefined {if@mainmatter}\iftrue {
+\csname if@mainmatter\endcsname }\let \Hy@next \relax \fi \fi \Hy@next \Hy@org@
+chapter .
+Package newfloat Info: \Hy@org@chapter = macro:[#1]#2->\NR@gettitle {#1}\NR@cha
+pter [{#1}]{#2}.
+)
+Package newfloat Info: New float `video' with options `' on input line 5.
+\c@video=\count314
+\newfloat@ftype=\count315
+Package newfloat Info: float type `video'=8 on input line 5.
+
+(./embed_video.tex
+(/home/chang/texlive/2022/texmf-dist/tex/latex/media9/pdfbase.sty
+Package: pdfbase 2022/03/18 v0.54 driver independent access to low-level PDF fe
+atures
+\g_pbs_page_int=\count316
+\g_pbs_obj_int=\count317
+\g_pbs_oc_int=\count318
 )) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-5.
-
-(/home/chang/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+1.
+ (/home/chang/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -626,19 +650,19 @@ LaTeX Font Info:    ... okay on input line 15.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 15.
+Package hyperref Info: Link coloring ON on input line 21.
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 15.
-LaTeX Info: Redefining \microtypecontext on input line 15.
-Package microtype Info: Applying patch `item' on input line 15.
-Package microtype Info: Applying patch `toc' on input line 15.
-Package microtype Info: Applying patch `eqnum' on input line 15.
-Package microtype Info: Applying patch `footnote' on input line 15.
+(lastpage)             ! on input line 21.
+LaTeX Info: Redefining \microtypecontext on input line 21.
+Package microtype Info: Applying patch `item' on input line 21.
+Package microtype Info: Applying patch `toc' on input line 21.
+Package microtype Info: Applying patch `eqnum' on input line 21.
+Package microtype Info: Applying patch `footnote' on input line 21.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -648,7 +672,8 @@ Package microtype Info: No adjustment of kerning.
 (/home/chang/texlive/2022/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 23
+Package newfloat Info: Trying Plan B...
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 29
 .
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -659,7 +684,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
-3.
+9.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
@@ -669,7 +694,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 23.
+ 29.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -679,19 +704,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 23.
+ 29.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 23.
+ 29.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 23.
+ 29.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
@@ -703,67 +728,80 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
-3.
+9.
 
 (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
-
-Missing character: There is no – ("2013) in font ptmr8t!
-[1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
+ [1
 
 ]
-
-LaTeX Warning: Citation `@kokalari2013review' on page 2 undefined on input line
- 134.
-
 File: ps_circuit_schema.jpg Graphic file (type bmp)
 <ps_circuit_schema.jpg>
-[2]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-68.
- (/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+74.
+
+(/home/chang/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+) [2]
 File: electric_circuit_new.jpg Graphic file (type bmp)
 <electric_circuit_new.jpg>
+
+<totalAnimationNorm.mp4>
+File: thumbnail_norm.jpg Graphic file (type bmp)
+<thumbnail_norm.jpg>
+File: thumbnail_norm.jpg Graphic file (type bmp)
+<thumbnail_norm.jpg>
+Package hyperref Info: bookmark level for unknown video defaults to 0 on input 
+line 264.
+ <totalAnimationSb.mp4>
+File: thumbnail_simple_block.jpg Graphic file (type bmp)
+<thumbnail_simple_block.jpg>
+File: thumbnail_simple_block.jpg Graphic file (type bmp)
+<thumbnail_simple_block.jpg>
+ <totalAnimation.mp4>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
+
+<canalFlowOneway.mp4>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
+ <canalFlowComparison.mp4>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
+File: thumbnail_oneway.jpg Graphic file (type bmp)
+<thumbnail_oneway.jpg>
  [3]
-[4]
 File: pumping_mechanism_close.jpg Graphic file (type bmp)
 <pumping_mechanism_close.jpg>
 File: pumping_mechanism_open.jpg Graphic file (type bmp)
 <pumping_mechanism_open.jpg>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
-(./main.bbl [6]
+ [4] (./main.bbl [5]
+[6] [7]
 Missing character: There is no 月 ("6708) in font ptmr8t!
-[7]) 
+) 
 AED: lastpage setting LastPage
-[8] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+[8] [9] [10] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4CBF47DA79EECE24C40BECA3C64A89D3;100.
+(rerunfilecheck)             Checksum: C12EA75D9E023789B944C1ADF67E8A6E;100.
  ) 
 Here is how much of TeX's memory you used:
- 23365 strings out of 476127
- 456193 string characters out of 5807904
- 801808 words of memory out of 5000000
- 43893 multiletter control sequences out of 15000+600000
- 503857 words of font info for 71 fonts, out of 8000000 for 9000
+ 23756 strings out of 476127
+ 464241 string characters out of 5807904
+ 825680 words of memory out of 5000000
+ 44264 multiletter control sequences out of 15000+600000
+ 502161 words of font info for 70 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 87i,12n,91p,1001b,500s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,11n,91p,1001b,553s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (8 pages).
+Output written on main.pdf (10 pages).
