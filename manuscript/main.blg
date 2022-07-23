@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: naturemag-doi.bst
 Database file #1: my_library.bib
-You've used 38 entries,
+Warning--I didn't find a database entry for "video:simple_block"
+You've used 40 entries,
             2380 wiz_defined-function locations,
-            1260 strings with 17529 characters,
-and the built_in function-call counts, 16028 in all, are:
-= -- 1184
-> -- 384
+            1272 strings with 17904 characters,
+and the built_in function-call counts, 16954 in all, are:
+= -- 1249
+> -- 416
 < -- 0
-+ -- 192
-- -- 96
-* -- 2100
-:= -- 1766
-add.period$ -- 113
-call.type$ -- 38
-change.case$ -- 41
++ -- 208
+- -- 104
+* -- 2227
+:= -- 1865
+add.period$ -- 119
+call.type$ -- 40
+change.case$ -- 43
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 1335
-empty$ -- 1452
-format.name$ -- 126
-if$ -- 3165
+cite$ -- 40
+duplicate$ -- 1411
+empty$ -- 1528
+format.name$ -- 136
+if$ -- 3344
 int.to.chr$ -- 0
-int.to.str$ -- 38
-missing$ -- 323
-newline$ -- 199
-num.names$ -- 38
-pop$ -- 186
+int.to.str$ -- 40
+missing$ -- 343
+newline$ -- 209
+num.names$ -- 40
+pop$ -- 199
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 224
+skip$ -- 238
 stack$ -- 0
-substring$ -- 1030
-swap$ -- 1364
+substring$ -- 1080
+swap$ -- 1448
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 106
-width$ -- 40
-write$ -- 449
+while$ -- 112
+width$ -- 42
+write$ -- 472
+(There was 1 warning)

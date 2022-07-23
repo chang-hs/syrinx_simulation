@@ -334,4 +334,23 @@
   \textbf{\bibinfo{volume}{59}}, \bibinfo{pages}{123--142},
   \doiprefix\url{10.1007/BF01411198} (\bibinfo{year}{1981}).
 
+\bibitem{newman1981observations}
+\bibinfo{author}{Newman, P.~K.}, \bibinfo{author}{Terenty, T.~R.} \&
+  \bibinfo{author}{Foster, J.~B.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Some observations on the
+  pathogenesis of syringomyelia}}.
+\newblock {\emph{\JournalTitle{Journal of Neurology, Neurosurgery, and
+  Psychiatry}}} \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{964--969},
+  \doiprefix\url{10.1136/jnnp.44.11.964} (\bibinfo{year}{1981}).
+
+\bibitem{yasui1999agerelated}
+\bibinfo{author}{Yasui, K.}, \bibinfo{author}{Hashizume, Y.},
+  \bibinfo{author}{Yoshida, M.}, \bibinfo{author}{Kameyama, T.} \&
+  \bibinfo{author}{Sobue, G.}
+\newblock \bibinfo{journal}{\bibinfo{title}{Age-related morphologic changes of
+  the central canal of the human spinal cord}}.
+\newblock {\emph{\JournalTitle{Acta Neuropathologica}}}
+  \textbf{\bibinfo{volume}{97}}, \bibinfo{pages}{253--259}
+  (\bibinfo{year}{1999}).
+
 \end{thebibliography}
