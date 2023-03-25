@@ -1,0 +1,306 @@
+Analyses with Renewed Time Constant
+
+In[716]:= Quit
+In[73]:= 8Pi*0.0007*0.01/1.6/1.6/10^(-8)
+Out[73]= 6872.23
+In[78]:= Pi(0.01^2-0.007^2)
+Out[78]= 0.000160221
+One - way Valve Analysis
+In[1]:= initialCanalPressure=0;
+direction = 1;(* direction of the diod 0: normal, 1: reverse *)
+dx = 20;  (* efficiency of the diode *)
+diod[v_, r_, x_] := Which[
+direction ==0,If[v>0, v/r,v/(x*r)],
+direction==1, If[v<0,v/r, v/(x*r)]];
+n=100;
+cycle=1;(* cycle per sec of CSF wave *)
+convmmhg=133.3223874;(* conversion constant from mmHg to Pascal*)
+convcmH2O=98.0665;(* 1 cmH2O = 98.0665 Pascal *)
+subaraP=10convcmH2O;
+pulseAmp=subaraP/5;
+en[t_]=pulseAmp* Sin[2 Pi*cycle* t]+subaraP;
+rc=1.78 10^11*100/n;
+rs=6872*100/n;
+Rflux=10rc;
+R0=rs;
+Rout=rc;
+dsub=10^(-10);
+dtheca=10^(-3);
+dcanal=10^(-13);
+Dcist=dsub;
+STFactor=50;
+SFFactor=.005;
+CFFactor=150000; (* canal flow gain for display *)
+rpattern=1;
+r=Which[
+rpattern==1,Table[rc,n],
+rpattern==2,Join[Table[rc,n/2-1],{100rc},Table[rc,n/2]],
+rpattern==3,Join[Table[rc,n-1],{1000rc}]
+];
+Rpattern = 1;
+R=Which[
+Rpattern== 1,Table[rs,n],
+Rpattern==2, Join[Table[rs,n/2-1],{100rs},Table[rs,n/2]]
+];
+
+c=Table[dcanal,n-1];(* canal capacitance *)
+d=Join[Table[dsub,n-1], {dtheca}];(* subarachnoid capacitance *)
+
+k=25; (* location of one-way valve of the canal *)
+Vob[t_]:=(Rout r[[1]] en[t] +Rflux r[[1]] Vcist[t]+Rflux Rout(v[1][t]+u[1][t]))/(Rout r[[1]]+Rflux r[[1]]+Rflux Rout);
+eqn=Join[{v[1]'[t]==((Vob[t]-v[1][t]-u[1][t])/r[[1]]+(v[2][t]+u[2][t]-v[1][t]-u[1][t])/r[[2]])/c[[1]],
+		u[1]'[t]==((Vcist[t]-u[1][t])/R[[1]]+(u[2][t]-u[1][t])/R[[2]]+c[[1]] v[1]'[t])/d[[1]],
+		Vcist'[t]==((en[t]-Vcist[t])/R0+(Vob[t]-Vcist[t])/Rout+(u[1][t]-Vcist[t])/R[[1]])/Dcist},
+	
+Table[v[i]'[t]==((v[i-1][t]+u[i-1][t]-v[i][t]-u[i][t])/r[[i]]+(v[i+1][t]+u[i+1][t]-v[i][t]-u[i][t])/r[[i+1]])/c[[i]],{i,2,n-2}],
+       Table[u[i]'[t]==((u[i-1][t]-u[i][t])/R[[i]]+(u[i+1][t]-u[i][t])/R[[i+1]]+c[[i]] v[i]'[t])/d[[i]],{i,2,k-2}],
+{u[k-1]'[t]==(c[[k-1]]v[k-1]'[t]-(u[k-1][t]-u[k-2][t])/R[[k-1]]-diod[u[k-1][t]-u[k][t],R[[k]],dx])/d[[k-1]],
+u[k]'[t]==(c[[k]]v[k]'[t]+diod[u[k-1][t]-u[k][t],R[[k]],dx]-(u[k][t]-u[k+1][t])/R[[k+1]])/d[[k]]},
+  Table[u[i]'[t]==((u[i-1][t]-u[i][t])/R[[i]]+(u[i+1][t]-u[i][t])/R[[i+1]]+c[[i]] v[i]'[t])/d[[i]],{i,k+1,n-1}],
+		{v[n-1]'[t]==((v[n-2][t]+u[n-2][t]-v[n-1][t]-u[n-1][t])/r[[n-1]]+(u[n][t]-v[n-1][t]-u[n-1][t])/r[[n]])/c[[n-1]],
+			u[n]'[t]==((v[n-1][t]+u[n-1][t]-u[n][t])/r[[n]]+(u[n-1][t]-u[n][t])/R[[n]])/d[[n]]},
+		{Vcist[0]==100},
+		Table[v[i][0]==initialCanalPressure,{i,1,n-1}],
+		Table[u[i][0]==subaraP,{i,1,n}]
+			];
+funcs=Join[{Vcist},Table[v[i],{i,1,n-1}],Table[u[i],{i,1,n}]];
+sol=NDSolve[eqn,funcs,{t,0,20}];
+DuralTension[i_][t_]:=First[u[i][t]/.sol];
+SyrinxTension[i_][t_]:=First[v[i][t]/.sol];
+(* SubarachnoidFlow[i_][t_]:=First[(u[i][t]-u[i+1][t])/R[[i]]/.sol]; *)
+SubarachnoidFlow[i_][t_]:=Which[
+i==1,First[(Vcist[t]-u[1][t])/R[[1]]/.sol],
+i==k,First[diod[u[k-1][t]-u[k][t],R[[k]],dx]/.sol],
+True,First[(u[i-1][t]-u[i][t])/R[[i]]/.sol]
+];
+SyrinxFlow[i_][t_]:=First[(v[i][t]+u[i][t]-v[i+1][t]-u[i+1][t])/r[[i]]/.sol];
+CanalFlow[i_][t_] :=  Which[
+i ==1,First[ (Vob[t]-u[1][t]-v[1][t])/r[[1]]/.sol],
+i==n,First[(u[n-1][t]+v[n-1][t]-u[n][t])/r[[n]]/.sol],
+True,First[(u[i-1][t]+v[i-1][t]-u[i][t]-v[i][t])/r[[i]]/.sol]
+];
+AbsCanalPressure[i_][t_]:=First[(u[i][t]+v[i][t])/.sol];
+
+In[135]:= canalWave=Animate[ListLinePlot[
+{
+Table[{i,DuralTension[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTension[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlow[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlow[i][t]*10^6},{i,1,n}]  (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20},AnimationRate->0.5]
+
+Out[135]= Manipulate[ListLinePlot[{Table[{i, DuralTension[i][t]/convcmH2O}, 
+     {i, 1, n - 1}], Table[{i, STFactor*(SyrinxTension[i][t]/convcmH2O)}, 
+     {i, 1, n - 1}], Table[{i, (SFFactor*SubarachnoidFlow[i][t])*10^6}, 
+     {i, 1, n - 1}], Table[{i, (CFFactor*CanalFlow[i][t])*10^6}, {i, 1, n}]}, 
+   range1 = 20; PlotRange -> {-range1, range1}, 
+   PlotLegends -> {"Dural Tension", "Channel Tension", "Subarachnoid Flow", 
+     "Channel Flow"}], {{t, 13.003445863723755}, 0, 20, AnimationRate -> 0.5, 
+   AppearanceElements -> {"ProgressSlider", "PlayPauseButton", 
+     "FasterSlowerButtons", "DirectionButton"}}, ControlType -> Animator, 
+  AppearanceElements -> None, DefaultBaseStyle -> "Animate", 
+  DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> True, 
+  ShrinkingDelay -> 10.]
+In[70]:= (SubarachnoidFlow[50][5.4]/.sol)*10^6
+Out[70]= {1529.85}
+In[111]:= 10*convmmhg/R[[5]]
+Out[111]= 0.194008
+In[134]:= absoluteCanaTensionWaveOneway=Animate[ListLinePlot[
+{
+Table[{i,(DuralTension[i][t]+SyrinxTension[i][t])/convcmH2O},{i,1,n-1}]      (* Absolute Canal Tension *)
+},  
+range1 = 20;
+PlotRange->{8,12},PlotLegends->{"Absolute Channel Tension"}],{t,0,20},AnimationRate->0.5]
+
+Out[134]= Manipulate[ListLinePlot[{Table[{i, (DuralTension[i][t] + SyrinxTension[i][t])/
+       convcmH2O}, {i, 1, n - 1}]}, range1 = 20; PlotRange -> {8, 12}, 
+   PlotLegends -> {"Absolute Channel Tension"}], 
+  {{t, 19.942477226257324}, 0, 20, AnimationRate -> 0.5, 
+   AppearanceElements -> {"ProgressSlider", "PlayPauseButton", 
+     "FasterSlowerButtons", "DirectionButton"}}, ControlType -> Animator, 
+  AppearanceElements -> None, DefaultBaseStyle -> "Animate", 
+  DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> True, 
+  ShrinkingDelay -> 10.]
+Normal Flow Analysis
+In[41]:= eqnNorm=Join[{v[1]'[t]==((Vob[t]-v[1][t]-u[1][t])/r[[1]]+(v[2][t]+u[2][t]-v[1][t]-u[1][t])/r[[2]])/c[[1]],
+		u[1]'[t]==((Vcist[t]-u[1][t])/R[[1]]+(u[2][t]-u[1][t])/R[[2]]+c[[1]] v[1]'[t])/d[[1]],
+		Vcist'[t]==((en[t]-Vcist[t])/R0+(Vob[t]-Vcist[t])/Rout+(u[1][t]-Vcist[t])/R[[1]])/Dcist},
+	
+Table[v[i]'[t]==((v[i-1][t]+u[i-1][t]-v[i][t]-u[i][t])/r[[i]]+(v[i+1][t]+u[i+1][t]-v[i][t]-u[i][t])/r[[i+1]])/c[[i]],{i,2,n-2}],
+       Table[u[i]'[t]==((u[i-1][t]-u[i][t])/R[[i]]+(u[i+1][t]-u[i][t])/R[[i+1]]+c[[i]] v[i]'[t])/d[[i]],{i,2,n-1}],
+		{v[n-1]'[t]==((v[n-2][t]+u[n-2][t]-v[n-1][t]-u[n-1][t])/r[[n-1]]+(u[n][t]-v[n-1][t]-u[n-1][t])/r[[n]])/c[[n-1]],
+			u[n]'[t]==((v[n-1][t]+u[n-1][t]-u[n][t])/r[[n]]+(u[n-1][t]-u[n][t])/R[[n]])/d[[n]]},
+		{Vcist[0]==100},
+		Table[v[i][0]==initialCanalPressure,{i,1,n-1}],
+		Table[u[i][0]==subaraP,{i,1,n}]
+			];
+funcs=Join[{Vcist},Table[v[i],{i,1,n-1}],Table[u[i],{i,1,n}]];
+solNorm=NDSolve[eqnNorm,funcs,{t,0,20}];
+DuralTensionNorm[i_][t_]:=First[u[i][t]/.solNorm];
+SyrinxTensionNorm[i_][t_]:=First[v[i][t]/.solNorm];
+SubarachnoidFlowNorm[i_][t_]:=First[(u[i][t]-u[i+1][t])/R[[i]]/.solNorm];
+SyrinxFlowNorm[i_][t_]:=First[(v[i][t]+u[i][t]-v[i+1][t]-u[i+1][t])/r[[i]]/.solNorm];
+CanalFlowNorm[i_][t_] :=  Which[
+i ==1,First[ (Vob[t]-u[1][t]-v[1][t])/r[[1]]/.solNorm],
+i==n,First[(u[n-1][t]+v[n-1][t]-u[n][t])/r[[n]]/.solNorm],
+True,First[(u[i-1][t]+v[i-1][t]-u[i][t]-v[i][t])/r[[i]]/.solNorm]
+]
+In[133]:= canalWave=Animate[ListLinePlot[
+{
+Table[{i,DuralTensionNorm[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTensionNorm[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlowNorm[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlowNorm[i][t]*10^6},{i,1,n}]  (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20},AnimationRate->0.5]
+
+Out[133]= Manipulate[ListLinePlot[{Table[{i, DuralTensionNorm[i][t]/convcmH2O}, 
+     {i, 1, n - 1}], Table[{i, STFactor*(SyrinxTensionNorm[i][t]/convcmH2O)}, 
+     {i, 1, n - 1}], Table[{i, (SFFactor*SubarachnoidFlowNorm[i][t])*10^6}, 
+     {i, 1, n - 1}], Table[{i, (CFFactor*CanalFlowNorm[i][t])*10^6}, 
+     {i, 1, n}]}, range1 = 20; PlotRange -> {-range1, range1}, 
+   PlotLegends -> {"Dural Tension", "Channel Tension", "Subarachnoid Flow", 
+     "Channel Flow"}], {{t, 18.124850273132324}, 0, 20, AnimationRate -> 0.5, 
+   AppearanceElements -> {"ProgressSlider", "PlayPauseButton", 
+     "FasterSlowerButtons", "DirectionButton"}}, ControlType -> Animator, 
+  AppearanceElements -> None, DefaultBaseStyle -> "Animate", 
+  DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> True, 
+  ShrinkingDelay -> 10.]
+Simple Block Analysis
+In[122]:= Rsb= Join[Table[rs,k-1],{20rs},Table[rs,n-k]];
+eqnsb=Join[{v[1]'[t]==((Vob[t]-v[1][t]-u[1][t])/r[[1]]+(v[2][t]+u[2][t]-v[1][t]-u[1][t])/r[[2]])/c[[1]],
+		u[1]'[t]==((Vcist[t]-u[1][t])/Rsb[[1]]+(u[2][t]-u[1][t])/Rsb[[2]]+c[[1]] v[1]'[t])/d[[1]],
+		Vcist'[t]==((en[t]-Vcist[t])/R0+(Vob[t]-Vcist[t])/Rout+(u[1][t]-Vcist[t])/Rsb[[1]])/Dcist},
+	
+Table[v[i]'[t]==((v[i-1][t]+u[i-1][t]-v[i][t]-u[i][t])/r[[i]]+(v[i+1][t]+u[i+1][t]-v[i][t]-u[i][t])/r[[i+1]])/c[[i]],{i,2,n-2}],
+       Table[u[i]'[t]==((u[i-1][t]-u[i][t])/Rsb[[i]]+(u[i+1][t]-u[i][t])/Rsb[[i+1]]+c[[i]] v[i]'[t])/d[[i]],{i,2,n-1}],
+		{v[n-1]'[t]==((v[n-2][t]+u[n-2][t]-v[n-1][t]-u[n-1][t])/r[[n-1]]+(u[n][t]-v[n-1][t]-u[n-1][t])/r[[n]])/c[[n-1]],
+			u[n]'[t]==((v[n-1][t]+u[n-1][t]-u[n][t])/r[[n]]+(u[n-1][t]-u[n][t])/Rsb[[n]])/d[[n]]},
+		{Vcist[0]==100},
+		Table[v[i][0]==initialCanalPressure,{i,1,n-1}],
+		Table[u[i][0]==subaraP,{i,1,n}]
+			];
+funcs=Join[{Vcist},Table[v[i],{i,1,n-1}],Table[u[i],{i,1,n}]];
+solsb=NDSolve[eqnsb,funcs,{t,0,20}];
+DuralTensionSb[i_][t_]:=First[u[i][t]/.solsb];
+SyrinxTensionSb[i_][t_]:=First[v[i][t]/.solsb];
+SubarachnoidFlowSb[i_][t_]:=First[(u[i][t]-u[i+1][t])/Rsb[[i+1]]/.solsb];
+SyrinxFlowSb[i_][t_]:=First[(v[i][t]+u[i][t]-v[i+1][t]-u[i+1][t])/r[[i]]/.solsb];
+CanalFlowSb[i_][t_] :=  Which[
+i ==1,First[ (Vob[t]-u[1][t]-v[1][t])/r[[1]]/.solsb],
+i==n,First[(u[n-1][t]+v[n-1][t]-u[n][t])/r[[n]]/.solsb],
+True,First[(u[i-1][t]+v[i-1][t]-u[i][t]-v[i][t])/r[[i]]/.solsb]
+]
+In[132]:= simpleBlockWave=Animate[ListLinePlot[
+{
+Table[{i,DuralTensionSb[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTensionSb[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlowSb[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlowSb[i][t]*10^6},{i,1,n}]  (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20},AnimationRate->0.5]
+
+Out[132]= Manipulate[ListLinePlot[{Table[{i, DuralTensionSb[i][t]/convcmH2O}, 
+     {i, 1, n - 1}], Table[{i, STFactor*(SyrinxTensionSb[i][t]/convcmH2O)}, 
+     {i, 1, n - 1}], Table[{i, (SFFactor*SubarachnoidFlowSb[i][t])*10^6}, 
+     {i, 1, n - 1}], Table[{i, (CFFactor*CanalFlowSb[i][t])*10^6}, 
+     {i, 1, n}]}, range1 = 20; PlotRange -> {-range1, range1}, 
+   PlotLegends -> {"Dural Tension", "Channel Tension", "Subarachnoid Flow", 
+     "Channel Flow"}], {{t, 13.941683769226074}, 0, 20, AnimationRate -> 0.5, 
+   AppearanceElements -> {"ProgressSlider", "PlayPauseButton", 
+     "FasterSlowerButtons", "DirectionButton"}}, ControlType -> Animator, 
+  AppearanceElements -> None, DefaultBaseStyle -> "Animate", 
+  DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> True, 
+  ShrinkingDelay -> 10.]
+Rendering of Movies
+In[49]:= renderRate=0.02;
+range1=20;
+One - way valve
+In[139]:= totalAnimationOneway=Table[ListLinePlot[
+{
+Table[{i,DuralTension[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTension[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlow[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlow[i][t]*10^6},{i,1,n}]   (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20, renderRate}];
+In[140]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/totalAnimation.mp4",totalAnimationOneway];
+\:8A55\:4FA1\:4E2D\:FF1AIn[140]:= General::sysffmpeg: 制限付きのFFmpegを使用しています．より完全なコーデックサポートのためにはFFmpegをインストールしてください．
+In[60]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/totalAnimation.gif", totalAnimationOneway];
+In[141]:= canalFlowOneway=Table[ListLinePlot[
+{
+Table[{i,CFFactor*CanalFlow[i][t]*10^6},{i,1,n}]
+},
+range1=20;
+PlotRange->{-range1,range1},PlotLegends->{"Channel Flow"}],{t,0,20,renderRate}];
+In[142]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/canalFlowOneway.mp4",canalFlowOneway]
+Out[142]= /home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/canalFlowOneway.mp4
+"/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/canalFlowOneway.mp4"
+In[143]:= canalFlowComparison=Table[ListLinePlot[
+{
+Table[{i,CFFactor*CanalFlow[i][t]*10^6},{i,1,n}],
+Table[{i,CFFactor*CanalFlowSb[i][t]*10^6},{i,1,n}]
+},
+range1=20;
+PlotRange->{-range1,range1},PlotLegends->{"Channel Flow (One-way Valve)", "Channel Flow (Simple Block)"}],{t,0,20,renderRate}];
+In[144]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/canalFlowComparison.mp4",canalFlowComparison]
+Out[144]= /home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/canalFlowComparison.mp4
+In[48]:= syrinxTensionOneway=Table[ListLinePlot[
+{
+Table[{i,STFactor*SyrinxTension[i][t]/convcmH2O},{i,1,n-1}]
+},
+PlotRange->{-10,10}],{t,0,20,renderRate}];
+In[49]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/syrinxTensionOneway_10.mp4",syrinxTensionOneway]
+Out[49]= /home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/syrinxTensionOneway_10.mp4
+Normal
+In[145]:= totalAnimationNorm=Table[ListLinePlot[
+{
+Table[{i,DuralTensionNorm[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTensionNorm[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlowNorm[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlowNorm[i][t]*10^6},{i,1,n}]   (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20, renderRate}];
+In[146]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/totalAnimationNorm.mp4",totalAnimationNorm]
+Out[146]= /home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/totalAnimationNorm.mp4
+In[52]:= syrinxTensionNorm=Table[ListLinePlot[
+{
+Table[{i,STFactor*SyrinxTensionNorm[i][t]/convcmH2O},{i,1,n-1}]      (*syrinx tension*)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20, renderRate}];
+In[53]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/syrinxTensionNorm.mp4", syrinxTensionNorm]
+\:8A55\:4FA1\:4E2D\:FF1AIn[53]:= General::sysffmpeg: 制限付きのFFmpegを使用しています．より完全なコーデックサポートのためにはFFmpegをインストールしてください．
+Out[53]= /home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/syrinxTensionNorm.mp4
+Simple Block
+In[147]:= totalAnimationSb=Table[ListLinePlot[
+{
+Table[{i,DuralTensionSb[i][t]/convcmH2O},{i,1,n-1}],       (* Dural Tension *)
+Table[{i,STFactor*SyrinxTensionSb[i][t]/convcmH2O},{i,1,n-1}],       (*syrinx tension*)
+Table[{i,SFFactor*SubarachnoidFlowSb[i][t]*10^6},{i,1,n-1}],   (*subarachnoid flow*)
+Table[{i,CFFactor*CanalFlowSb[i][t]*10^6},{i,1,n}]   (* Central Canal Flow *)
+},  
+range1 = 20;
+PlotRange->{-range1,range1},PlotLegends->{"Dural Tension","Channel Tension","Subarachnoid Flow","Channel Flow"}],{t,0,20, renderRate}];
+In[148]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/new_analysis/images/totalAnimationSb.mp4",totalAnimationSb];
+Only Canal Flow
+In[1]:= canalFlowOneWay=Table[ListLinePlot[
+{
+Table[{i,CFFactor* CanalFlow[i][t]},{i,1,n-1}]
+},
+range1=200;
+PlotRange->{-range1,range1},
+PlotLegends->{"Canal Flow"}
+],{t, 0,20,renderRate}];
+\:8A55\:4FA1\:4E2D\:FF1AIn[1]:= Table::iterb: 反復演算{t,0,20,renderRate}は適正な範囲を持ちません．
+In[2]:= Export["/home/chang/Dropbox/Projects/MRI_flow/mathematica/concrete/canalFlow.mp4",canalFlow]
+\:8A55\:4FA1\:4E2D\:FF1AIn[2]:= Export::errframe: canalFlowは映像フレームに変換することはできません．
+Out[2]= $Failed
+In[64]:= 10/4000*100*100*100
+Out[64]= 2500
